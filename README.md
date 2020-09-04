@@ -89,19 +89,19 @@ The ***B2U\Core*** namespace contains all modules and classes need to run a site
 
 [\B2U\Core\Manager](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - main framework entry point (singletone architecture)
 
-[\B2U\Core\Session](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - session managment class
+[\B2U\Core\Session](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoresession) - session managment class
 
-[\B2U\Core\Response](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - class for response construction
+[\B2U\Core\Response](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoreresponse) - class for response construction
 
-[\B2U\Core\Request](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - request pre-processor object
+[\B2U\Core\Request](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucorerequest) - request pre-processor object
 
-[\B2U\Core\HTMLTemplate](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - HTML templating interface
+[\B2U\Core\HTMLTemplate](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucorehtmltemplate) - HTML templating interface
 
-[\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - class definition for API endpoints
+[\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoreaction) - class definition for API endpoints
 
-[\B2U\Core\Module](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - class definition for Interfaces (Database, Authorization, User, ...)
+[\B2U\Core\Module](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremodule) - class definition for Interfaces (Database, Authorization, User, ...)
 
-[\B2U\Core\Utility](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - static class with utility functions
+[\B2U\Core\Utility](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoreutility) - static class with utility functions
 
 ### \B2U\Core\Manager
 The ***Manager*** is a Singletone object, which means it will only have one instance of it allocated for the entire duration of the script execution, and that it provides interfaces to access most of the framework's objects via defined accessors.
