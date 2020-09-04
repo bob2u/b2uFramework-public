@@ -87,21 +87,21 @@ catch(\Exception $e) {
 ## The B2U\Core Namespace
 The ***B2U\Core*** namespace contains all modules and classes need to run a site/application built on this framework. The main components are:
 
-[\B2U\Core\Manager](https://github.com/bob2u/b2uFramework/blob/master/README.md#b2ucoremanager) - main framework entry point (singletone architecture)
+[\B2U\Core\Manager](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - main framework entry point (singletone architecture)
 
-[\B2U\Core\Session](https://github.com/bob2u/b2uFramework/blob/master/README.md#b2ucoremanager) - session managment class
+[\B2U\Core\Session](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - session managment class
 
-[\B2U\Core\Response](https://github.com/bob2u/b2uFramework/blob/master/README.md#b2ucoremanager) - class for response construction
+[\B2U\Core\Response](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - class for response construction
 
-[\B2U\Core\Request](https://github.com/bob2u/b2uFramework/blob/master/README.md#b2ucoremanager) - request pre-processor object
+[\B2U\Core\Request](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - request pre-processor object
 
-[\B2U\Core\HTMLTemplate](https://github.com/bob2u/b2uFramework/blob/master/README.md#b2ucoremanager) - HTML templating interface
+[\B2U\Core\HTMLTemplate](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - HTML templating interface
 
-[\B2U\Core\Action](https://github.com/bob2u/b2uFramework/blob/master/README.md#b2ucoremanager) - class definition for API endpoints
+[\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - class definition for API endpoints
 
-[\B2U\Core\Module](https://github.com/bob2u/b2uFramework/blob/master/README.md#b2ucoremanager) - class definition for Interfaces (Database, Authorization, User, ...)
+[\B2U\Core\Module](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - class definition for Interfaces (Database, Authorization, User, ...)
 
-[\B2U\Core\Utility](https://github.com/bob2u/b2uFramework/blob/master/README.md#b2ucoremanager) - static class with utility functions
+[\B2U\Core\Utility](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager) - static class with utility functions
 
 ### \B2U\Core\Manager
 The ***Manager*** is a Singletone object, which means it will only have one instance of it allocated for the entire duration of the script execution, and that it provides interfaces to access most of the framework's objects via defined accessors.
@@ -179,7 +179,7 @@ The $config is an array that is used to provide 3 main sections:
 ```
 ***@note -*** _If the Plugin's Actions are in a `namespace` then the files containing the Action's deinition should include `return __NAMESPACE__;` as the last line of code within the file so that the framework would be able to determine the correct class objects that needs to be instantiated on any given Action call._
 
-3) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework/blob/master/README.md#terminology) for more details. Modules are added under each Interface main category, following the format below. Each Module will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded, or the path to a specific file that contains the `module_name class` or an `_autoload` function.
+3) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology) for more details. Modules are added under each Interface main category, following the format below. Each Module will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded, or the path to a specific file that contains the `module_name class` or an `_autoload` function.
 
 ```php
 "interface_category" => [
