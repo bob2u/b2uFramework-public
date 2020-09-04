@@ -225,7 +225,11 @@ b2uFramework provides basic session managment through `\B2U\Core\Session` object
 In terms of security the `\B2U\Core\Session` object automatically provides functionality to protect against **Session Fixation**, **Session Hijacking**, and **Cross Site Request Forgery**. These features exists, but to some degree require the application developer's attention to ensure they cannot be circumvented.
 
 #### CSRF Token
-To utilize the CSRF Token feature on _forms_, and _AJAX_ calls, the developers simply need to call a special class member `csrftoken`, which will 1. generate a unique CSRF token and store it in the current session, and 2. issue a cookie to the browser with the CSRF token value. Applications can simply embed the token in their forms, or submit them via the request headers for AJAX calls on every request. The framework provides calls for validating the token submitted, and allows the developer to take necessary action based on the result of the validation.
+To utilize the CSRF Token feature on _forms_, and _AJAX_ calls, the developers simply need to call the special class member `csrftoken`, which will:
+1. Generate a unique CSRF token and store it in the current session, and 
+2. Issue a cookie to the browser with the CSRF token value.
+
+Applications can simply embed the token in their forms, or submit them via the request headers for AJAX calls on every request. The framework provides calls for validating the token submitted, and allows the developer to take necessary action based on the result of the validation.
 
 To submit CSRF tokens with AJAX header request use the following code:
 ```javascript
