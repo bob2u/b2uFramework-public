@@ -45,38 +45,7 @@ try {
 	// directory to the root of the module, which will load all files
 	// with .php extensions, or a specific php file to include like a
 	// autoloader for the entire module.
-	\B2U\Core\Manager::instance()->setup([
-		"Includes" => [
-			"./example/assets/plugins/b2uPanel/b2u.action.php"		// since we will be using b2uPanel, this is a required 
-																	// global include for the javascript plugin to work.
-		],
-		"Plugins" => [
-			"/" => [ "Path" => "./example/site/" ],					// explicitly defining the root index.php for the site
-			"login" => [ "Path" => "./example/site/login" ],		// login panel plugin definition
-			"main" => [ "Path" => "./example/site/main" ]			// if login succeeds this will be the main sire
-		],
-		"Interfaces" => [
-			"Authorization" => [
-				"\UAuth\Auth" => [
-					"Path" => "example/interfaces/uauth"			// an authorization interface that has all the logic it
-				]													// needs for processing password encryption/decryption.
-																	// uses database so it will show how to tie-in to MySQL
-																	//
-																	// note, we could have used an interface with no depend
-																	// on other interfaces, and instead accessed  interface
-																	// for database in login plugin and sent data to UAuth/
-																	// Auth interface for processing, which would be SOLID.
-																	// but we promote using other interfaces to build other
-																	// more complex interfaces through dependency, as it is
-																	// being demonstarted in this example.
-			],
-			"Database" => [
-				"MySQL" => [
-					"Path" => "example/interfaces/database/mysql"	// interface to mysql database with all logic needed to
-				]													// connect, query and perform mysql database operations
-			]
-		]
-	]);
+	\B2U\Core\Manager::instance()->setup([]);
 
 	// if desired, at this point the session is still not created and
 	// a custome session handler can be added using \B2U\Core\Session
