@@ -218,3 +218,48 @@ Manager::instance()->callEndpoint($endpoint, $request, $data, $session = true)
 ##
 
 ### \B2U\Core\Session
+b2uFramework provides basic session managment through `\B2U\Core\Session` object, which encapsulates calls to PHP's `$_SESSION` super global, and will use the PHP default session handler. 
+
+***@note -*** _It is not recommened to use the default session handler on shared hosting, and strongly recommended to use `Session::setHandlers()` to implement a custom database driven session handler_
+
+In terms of security the `\B2U\Core\Session` object automatically provides functionality to protect against **Session Fixation**, **Session Hijacking**, and **Cross Site Request Forgery**. These features exists, but to some degree require the application developer's attention to ensure they cannot be circumvented.
+
+#### CSRF Token
+To utilize the CSRF Token feature on _forms_, and _AJAX_ calls, the developers simply need to call a special class member `csrftoken`, which will 1. generate a unique CSRF token and store it in the current session, and 2. issue a cookie to the browser with the CSRF token value. Applications can simply embed the token in their forms, or submit them via the request headers for AJAX calls on every request. The framework provides calls for validating the token submitted, and allows the developer to take necessary action based on the result of the validation.
+
+To submit CSRF tokens with AJAX header request use the following code:
+```javascript
+$( document ).ajaxSend( function( event, jqXHR ) {
+   jqXHR.setRequestHeader("X-CSRF-TOKEN", "{var:csrftoken}");
+});
+```
+
+The `\B2U\Core\Session` is treated like a singletone, and there is only one instance for the duration of the script's execution. This instance is already available in all Plugins by default, and can be requested from the `\B2U\Core\Manager::instance()->getSession()` or a direct call to `Session::instance()`. Additional features are exposed by session object and detailed below.
+
+```PHP 
+Session::setHandlers(array $callbacks)
+```
+@param **$callbacks** - `Array` - An array of callback functions that will set PHP session_* functionality for \[ _open_, _close_, _read_, _write_, _destroy_, _GC_, and optionally (_create_sid_, _validate_sid_, _update_timestamp_)]
+
+This function can only be called prior to any calls to `\B2U\Core\Manager::instance()->run()`, or explicit calls to `getSession()` and `Session::instance()`, in order to override the default PHP session handler. If the goal is to tie the session handler to a special Interface that may also use a Database connection then calls to `Manager::instance()->getInterface("Database", ...)` can still safely be made at this point, as long as the rules are followed to ensure no calls to the session object are made prior to this function being called.
+##
+```PHP 
+Session::instance()->getCsrfToken()
+```
+##
+```PHP 
+Session::instance()->validate($csrf_token = false)
+```
+##
+```PHP 
+Session::instance()->expired()
+```
+##
+```PHP 
+Session::instance()->regen()
+```
+##
+```PHP 
+Session::instance()->destroy()
+```
+##
