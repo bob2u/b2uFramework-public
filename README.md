@@ -238,8 +238,10 @@ $( document ).ajaxSend( function( event, jqXHR ) {
 });
 ```
 
-The `\B2U\Core\Session` is treated like a singletone, and there is only one instance for the duration of the script's execution. This instance is already available in all Plugins by default, and can be requested from the `\B2U\Core\Manager::instance()->getSession()` or a direct call to `Session::instance()`. Additional features are exposed by session object and detailed below.
+The `\B2U\Core\Session` is treated like a singletone, and there is only one instance for the duration of the script's execution. This instance is already available in all Plugins by default, and can be requested from the `\B2U\Core\Manager::instance()->getSession()` or a direct call to `Session::instance()`. 
 
+Additional features are exposed by session object and detailed below.
+##
 ```PHP 
 Session::setHandlers(array $callbacks)
 ```
