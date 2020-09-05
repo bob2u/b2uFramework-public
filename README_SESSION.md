@@ -21,7 +21,7 @@ $( document ).ajaxSend( function( event, jqXHR ) {
 
 The `\B2U\Core\Session` is treated as a singletone, and there is only one instance of it for the duration of the script's execution. This instance is made available to all Plugins by default via `$this->Session` parameter, and can also be requested via `\B2U\Core\Manager::instance()->getSession()` or a direct call to `Session::instance()`. 
 
-## Methods
+# Methods
 ```PHP 
 Session::instance(array $config = [])
 ```
