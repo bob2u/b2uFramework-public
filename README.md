@@ -109,17 +109,17 @@ The ***Manager*** is a Singletone object, which means it will only have one inst
 ```PHP 
 Manager::instance()
 ```
-@return - ``\B2U\Core\Manager`` - Returns a the single instance of the manager object when called from any .php script in the framework.
+@return - `\B2U\Core\Manager` - Returns the single instance of the manager object when called from any .php script in the framework.
 ##
 ```PHP 
 Manager::instance()->getSession()
 ```
-@return - ``\B2U\Core\Session`` - Returns a session object which encapsulates the current `$_SESSION` super global, and provides functionalities for session management.
+@return - `\B2U\Core\Session` - Returns the single instance of the session object which encapsulates the current `$_SESSION` super global, and provides functionalities for session management.
 ##
 ```PHP 
 Manager::instance()->getResponse()
 ```
-@return - ``\B2U\Core\Response`` - Returns the response object to be populated by the application, which will be sent back to the requester.
+@return - `\B2U\Core\Response` - Returns the response object to be populated by the application, which will be sent back to the requester.
 ##
 ```PHP 
 Manager::instance()->getHeaders()
@@ -250,6 +250,13 @@ $( document ).ajaxSend( function( event, jqXHR ) {
 The `\B2U\Core\Session` is treated as a singletone, and there is only one instance of it for the duration of the script's execution. This instance is made available to all Plugins by default via `$this->Session` parameter, and can also be requested via `\B2U\Core\Manager::instance()->getSession()` or a direct call to `Session::instance()`. 
 
 Following section details session functional methods.
+##
+```PHP 
+Session::instance(array $config = [])
+```
+@param **$config** - `Array` - Default `empty Array`. This parameter can be used to set the `"Life"` and `"Kill"`/expiration time for the session object and cookie. Normally it is set by the [`\B2U\Core\Manager`](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoremanager)'s `setup()` method.
+
+@return - `\B2U\Core\Session` - Returns the single instance of the session object which encapsulates the current `$_SESSION` super global, and provides functionalities for session management.
 ##
 ```PHP 
 Session::setHandlers(array $callbacks)
