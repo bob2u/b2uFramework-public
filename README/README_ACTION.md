@@ -2,9 +2,9 @@
 
 [Back](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#the-b2ucore-namespace)
 
-The cornerstone of using b2uFramework is the creation of Actions. As defined earlier, @see [Terminology:Action](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology), an Action is a specific .php file where the file name corresponds to the API endpoint under the Plugin directory. The Action's .php file will contain a class with the same name as the Action file. An Action performs a set of specific tasks (i.e., Methods). Also, to recap, A Method is a unique function within an Action class that will execute a task when requested.
+The cornerstone of using b2uFramework is the creation of Actions. As defined earlier, @see [Terminology:Action](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology), an Action is a specific .php file where the file name corresponds to the API endpoint under the Plugin directory. The Action's .php file will contain a class with the same name as the Action file. An Action performs a set of specific tasks (i.e., Methods). Also, to recap, A Method is a unique function within an Action class that will execute a task when requested. ***Plugins, Actions, and Methods define components of request URLs sent to the b2uFramework.*** 
 
-Plugins, Actions, and Methods build request URLs into the b2uFramework. A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`
+A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`
 
 In the section [Understanding index.php](https://github.com/bob2u/b2uFramework-public#understanding-indexphp) the default Action located in our directory root can be found - `class index`.
 
