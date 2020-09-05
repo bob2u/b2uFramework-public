@@ -124,4 +124,4 @@ Manager::instance()->callEndpoint($endpoint, $request, $data, $session = true)
 
 @return - \[`Mixed`, `int`] - Returns the cURL call results, and HTTP response code from making the request - throws` \Exception` on any errors.
 
-[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README_MANAGER.md#b2ucoremanager)
+[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MANAGER.md#b2ucoremanager)
