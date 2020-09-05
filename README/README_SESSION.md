@@ -102,4 +102,4 @@ Session::instance()->destroy()
 ```
 Destroys the current session active session and cookie values.
 
-[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README_SESSION.md#b2ucoresession)
+[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_SESSION.md#b2ucoresession)
