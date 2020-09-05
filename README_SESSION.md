@@ -21,6 +21,33 @@ $( document ).ajaxSend( function( event, jqXHR ) {
 
 The `\B2U\Core\Session` is treated as a singletone, and there is only one instance of it for the duration of the script's execution. This instance is made available to all Plugins by default via `$this->Session` parameter, and can also be requested via `\B2U\Core\Manager::instance()->getSession()` or a direct call to `Session::instance()`. 
 
+# Members
+```PHP
+csrftoken
+```
+Calling `$this->Session->csrftoken` within an Action, or `Session::instance()->csrftoken` from any script, will:
+
+1. Issue new CSRF token that can be used in the next form and/or AJAX call.
+2. Set the `"csrftoken"` cookie parameter to be sent back to the broswer.
+
+***@note -*** _Calling this member parameter immediately after a session's `validate()` call, which included a CSRF token check, will return the newly generated CSRF token without needing to issue a new token.  The new token can be used in the next form and/or AJAX call._
+##
+```PHP
+life
+```
+Get and Set the current `"Life"` attribute programatically for the duration of current script's execution.
+##
+```PHP
+dest
+```
+Get and Set the current `"Kill"` attribute programatically for the duration of current script's execution.
+##
+```PHP
+{variable_name}
+```
+Get and Set a persistent custom parameter that will be stored in the current `$_SESSION` super global, and can be access from the session object using the OOP `->variable_name` format.
+
+***@note -*** _Setting a custom variable will start the session of it is not already in the `PHP_SESSION_ACTIVE` status_
 # Methods
 ```PHP 
 Session::instance(array $config = [])
@@ -49,15 +76,23 @@ Session::instance()->getCsrfToken()
 ```PHP 
 Session::instance()->validate($csrf_token = false)
 ```
-@param **$csrf_token** - `bool` - Default `false`. Calling this function will check the validity of the session, and if provided, the CSRF token. This function is an alias for `expire()` when called with `false` passed for the $csrf_token parameter. If CSRF token is a valid value, it will be checked against the current session token
+@param **$csrf_token** - `bool` - Default `false`. Calling this function will check the validity of the session, and if provided, the CSRF token. This function is an alias for `expire()` when called with `false` passed for the $csrf_token parameter. If CSRF token is a valid value, it will be checked against the current session token, and the resulting `true/false` status returned to the application.
+
+If a CSRF token is validated, regardless of the results from the validation, the current session stored token will be invalidated, and a new CSRF token will be issued. The application can get this new token immediately by calling the special `csrftoken` parameter on the `\B2U\Core\Session\` object. This call **must** be the next call immediately following the `validate()` call in order to work.
+
+@return - `bool` - Returns `true` or `false` depending on the status of the session object, and the validity of the CSRF token - if provided.
 ##
 ```PHP 
 Session::instance()->expired()
 ```
+@return - `bool` - Returns `true` or `false` depending on whether a session has expired due to inactivity. 
+
+Everytime a request to the script results in an initial `Session::instance()` call, an internal timer in the global `$_SESSION` will be updated that will represent _time before last activity_. If the inactivity time is greater than the sessions's `"Life"` (Default 1800) then the session will be marked as expired.  It is the application's responsibility to take the appropriate action based on the results from this function.
 ##
 ```PHP 
 Session::instance()->regen()
 ```
+
 ##
 ```PHP 
 Session::instance()->destroy()
