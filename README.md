@@ -1,7 +1,7 @@
 # b2uFramework
 Lean PHP RESTful framework
 
-b2uFramework is a minimalist's PHP framework to help developers get a site up and running quickly, while following some design & architecture rather than them echoing out PHP content sprinkled in an HTML file. Out of the box the framework supports a few core features to allow this minimalist approach to be achieved. Furthermore, b2uFramework supports an interface and plugin mechanism, which allows reusable system components and site content to be developed and used across projects.
+b2uFramework is a minimalist's PHP framework to help developers get a website up and running quickly and follow some design & architecture rather than echoing out PHP content sprinkled in an HTML file. The framework supports a few core features out of the box to allow this minimalist approach to be achieved. Furthermore, b2uFramework supports an interface and plugin mechanism, allowing reusable system components and site content to be developed and used across projects.
 
 The b2uFramework does what most PHP frameworks do for a typical process cycle:
 1. Receive a request from a user
@@ -10,7 +10,7 @@ The b2uFramework does what most PHP frameworks do for a typical process cycle:
 4. Return a response to the request _i.e. JSON, file, HTML page, etc._
 
 ## Features Out-of-the-box
-b2uFramework supports a set of feature that are ready to be used out-of-the-box:
+b2uFramework supports a set of feature that is ready to be used out-of-the-box:
 
 * RESTFul API Architecture
 * Session Management - Session Fixation, and Session Hijacking support
@@ -19,21 +19,23 @@ b2uFramework supports a set of feature that are ready to be used out-of-the-box:
 * Abstract Plugin and Interface mechanism
 
 ## Licensing
-(c) Manavi Solutions, LLC. 
+(c) Manavi Solutions, LLC.
+
 For licensing details please email:
+
 contact [@t] manavi [.T] co
 
 ## Terminology
-There are a few basic concepts that have been established in order to help to understand the flow of data within this framework. These key concepts are:
-* **Plugin (Directory) -** Plugins in b2uFramework are reusable website/application specific components. These components are organized under directories, and the given directory name corresponds to an API endpoint. A Plugin can contain one or many Actions.
-* **Action (File/Class) -** An Action is a specific .php file where the file name corresponds to the API endpoint under the Plugin directory. The Action's .php file will contain a class with the same name as the Action file. An Action performs a set of specific tasks (i.e. Methods). 
+A few basic concepts have been established to help understand the flow of data within this framework. These key concepts are:
+* **Plugin (Directory) -** Plugins in b2uFramework are reusable website/application-specific components. These components are organized under directories, and the given directory name corresponds to an API endpoint. A Plugin can contain one or many Actions.
+* **Action (File/Class) -** An Action is a specific .php file where the file name corresponds to the API endpoint under the Plugin directory. The Action's .php file will contain a class with the same name as the Action file. An Action performs a set of specific tasks (i.e., Methods). 
 * **Method (Function) -** A Method is a unique function within an Action class that will execute a task when requested.
 
 A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`
 
 @see [\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README_ACTION.md#b2ucoreaction) for more details about b2uFramework request URL
 
-* **Interface -** The primary use of an Interface is to maintain a single instance access to some resources that lives once through the execution of the entire script, which is one that will not require multiple instances. These are entrypoints into new/extended functionality that can be added to the framework, and used/re-used by the application's Plugins as well as other Interfaces. Each Interface can provide access to the any number of modules they support. Common pre-defined Interface categories are:
+* **Interface -** The primary use of an Interface is to maintain single instance access to some resources that live once through the execution of the entire script, which is one that will not require multiple instances. These are entry points into new/extended functionality that can be added to the framework and used/re-used by the application's Plugins and other Interfaces. Each Interface can provide access to any number of modules they support. Common pre-defined Interface categories are:
 
   * Server - containing modules for server technology
   * Authorization - common modules could be _HeaderAuthorization_, _LDAP_, _DatabaseDriven_, etc.
@@ -44,21 +46,21 @@ A typical request to the b2uFramework will look like: `www.sitename.com/plugin/a
   * Utility - general purpose modules _(e.g. Google MAPs API, Captue, AI, etc.)_
 
 ## Getting Started
-The base framework consists of 2 php files, license file, and a web server configuration file. Simply place the ***index.php***, ***b2u.min.php*** file and the associated ***license.lic*** file in the root directory of a project. On Windows/IIS based servers use the ***web.config*** file, and for Linux/Apache based servers use the ***.htaccess*** file - placed in the root directory.
+The base framework consists of 2 PHP files, a license file, and a web server configuration file. Simply place the ***index.php***, ***b2u.min.php*** file and the associated ***license.lic*** file in the root directory of a project. On Windows/IIS based servers use the ***web.config*** file, and for Linux/Apache based servers use the ***.htaccess*** file - placed in the root directory.
 
-The entry point ***index.php*** has a `class index` defined, which will be the default Action/entry point into the application.
+The entry point ***index.php*** has a `class index` defined, which will be the default Action/entry point of the application.
 
 ```PHP 
 class index extends \B2U\Core\Action implements \B2U\Core\IAction {	
   ...
 }
 ```
-If the server configuration is setup correctly, accessing the root URL will run the site, and you should see a page with `Welcome to B2uFramework` displayed.
+If the server configuration is set up correctly, accessing the root URL will run the site, and you should see a page with `Welcome to B2uFramework` displayed.
 
-b2uFramework works by redirecting request to the site through ***index.php*** and from there routing it to the appropriate `Plugin / Action / Method` for processing.
+b2uFramework works by redirecting a request to the site through ***index.php*** and route it to the appropriate `Plugin / Action / Method` for processing.
 
 ## Understanding index.php
-The ***index.php*** provided with the framework is required, and contains a basic setup for any given site. First, it defines a default `class index`, which is optional, and can be removed once the site's root directory is re-defined. Second, it contains (2) two calls to the `\B2U\Core\Manager` that initialize and run the site. 
+The ***index.php*** provided with the framework is required and contains a basic setup for any given site. First, it defines a default `class index`, which is optional, and can be removed once the site's root directory is re-defined. Second, it contains (2) two calls to the `\B2U\Core\Manager` that initialize and run the website. 
 
 ***index.php*** works as a default **Action** for the _root directory_ **Plugin**, with a default `__constuct(...)` **Method**.
 ```php
