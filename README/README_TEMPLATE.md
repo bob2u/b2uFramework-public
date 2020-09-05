@@ -123,4 +123,4 @@ This function performs the same operation as its counterpart in `\B2U\Core\HTMLT
 ```
 @return - `string` - Retrieves the current value of the Variable.
 
-[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README_TEMPLATE.md#b2ucorehtmltemplate)
+[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_TEMPLATE.md#b2ucorehtmltemplate)
