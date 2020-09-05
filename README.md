@@ -103,9 +103,10 @@ The ***B2U\Core*** namespace contains all modules and classes need to run a site
 
 [\B2U\Core\Utility](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#b2ucoreutility) - static class with utility functions
 
-## \B2U\Core\Manager
+# \B2U\Core\Manager
 The ***Manager*** is a Singletone object, which means it will only have one instance of it allocated for the entire duration of the script execution, and that it provides interfaces to access most of the framework's objects via defined accessors.
-### Methods
+
+## Methods
 ```PHP 
 Manager::instance()
 ```
@@ -224,9 +225,9 @@ Manager::instance()->callEndpoint($endpoint, $request, $data, $session = true)
 @param **$session** - `bool` - Default `true`, Indicates if Session cookie data should be sent to the target $endpoint.
 
 @return - \[`Mixed`, `int`] - Returns the results of cURL call, and HTTP response code from making the request. Throws `\Exception` on any errors.
-##
 
-## \B2U\Core\Session
+
+# \B2U\Core\Session
 b2uFramework provides basic session managment through the `\B2U\Core\Session` object, which encapsulates calls to PHP's session_* functions and the `$_SESSION` super global and uses the default PHP session handler - unless overridden.
 
 ***@note -*** _It is not recommened to use the default PHP session handler on shared hosting environments, and it is strongly recommended to use the  `Session::setHandlers()` feature to implement a custom database driven session handler_
@@ -248,7 +249,8 @@ $( document ).ajaxSend( function( event, jqXHR ) {
 ```
 
 The `\B2U\Core\Session` is treated as a singletone, and there is only one instance of it for the duration of the script's execution. This instance is made available to all Plugins by default via `$this->Session` parameter, and can also be requested via `\B2U\Core\Manager::instance()->getSession()` or a direct call to `Session::instance()`. 
-### Methods
+
+## Methods
 ```PHP 
 Session::instance(array $config = [])
 ```
