@@ -13,6 +13,8 @@ Building dynamic HTML pages that are data-driven by the underlying PHP code is s
 
 ***@note -*** _When defining Variables and Panels nested within another Panel, they cannot share the same name as their parent Panel._
 
+***@note -*** _Panels can also be defined in JavaScript section by enclosing them inside of inline comments (`/*<!--panel:panel_name-->*/`)._
+
 An example of an HTML template that demonstrates all component variations is as follows.
 
 ```HTML
