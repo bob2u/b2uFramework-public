@@ -97,3 +97,4 @@ This function should get called generally once a significant event that elevates
 ```PHP 
 Session::instance()->destroy()
 ```
+Destroys the current session active session and cookie values.
