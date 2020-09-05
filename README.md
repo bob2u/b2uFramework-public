@@ -33,7 +33,7 @@ A few basic concepts have been established to help understand the flow of data w
 
 A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`
 
-@see [\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README_ACTION.md#b2ucoreaction) for more details about b2uFramework request URL
+@see [\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction) for more details about b2uFramework request URL
 
 * **Interface -** The primary use of an Interface is to maintain single instance access to some resources that live once through the execution of the entire script, which is one that will not require multiple instances. These are entry points into new/extended functionality that can be added to the framework and used/re-used by the application's Plugins and other Interfaces. Each Interface can provide access to any number of modules they support. Common pre-defined Interface categories are:
 
@@ -88,18 +88,18 @@ catch(\Exception $e) {
 ## The B2U\Core Namespace
 The ***B2U\Core*** namespace contains all modules and classes need to run a site/application built on this framework. The main components are:
 
-[\B2U\Core\Manager](https://github.com/bob2u/b2uFramework-public/blob/master/README_MANAGER.md#b2ucoremanager) - main framework entry point (singletone architecture)
+[\B2U\Core\Manager](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MANAGER.md#b2ucoremanager) - main framework entry point (singletone architecture)
 
-[\B2U\Core\Session](https://github.com/bob2u/b2uFramework-public/blob/master/README_SESSION.md#b2ucoresession) - session managment class
+[\B2U\Core\Session](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_SESSION.md#b2ucoresession) - session managment class
 
-[\B2U\Core\Response](https://github.com/bob2u/b2uFramework-public/blob/master/README_RESPONSE.md#b2ucoreresponse) - class for response construction
+[\B2U\Core\Response](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_RESPONSE.md#b2ucoreresponse) - class for response construction
 
 \B2U\Core\Request - request pre-processor object
 
-[\B2U\Core\HTMLTemplate](https://github.com/bob2u/b2uFramework-public/blob/master/README_TEMPLATE.md#b2ucorehtmltemplate) - HTML templating interface
+[\B2U\Core\HTMLTemplate](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_TEMPLATE.md#b2ucorehtmltemplate) - HTML templating interface
 
-[\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README_ACTION.md#b2ucoreaction) - class definition for API endpoints
+[\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction) - class definition for API endpoints
 
-[\B2U\Core\Module](https://github.com/bob2u/b2uFramework-public/blob/master/README_MODULE.md#b2ucoremodule) - class definition for Interfaces (Database, Authorization, User, ...)
+[\B2U\Core\Module](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MODULE.md#b2ucoremodule) - class definition for Interfaces (Database, Authorization, User, ...)
 
-[\B2U\Core\Utility](https://github.com/bob2u/b2uFramework-public/blob/master/README_UTILITY.md#b2ucoreutility) - static class with utility functions
+[\B2U\Core\Utility](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_UTILITY.md#b2ucoreutility) - static class with utility functions
