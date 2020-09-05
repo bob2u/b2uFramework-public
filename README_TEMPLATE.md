@@ -13,7 +13,8 @@ Building dynamic HTML pages that are data-driven by the underlying PHP code is s
 
 ***@note -*** _When defining Variables and Panels nested within another Panel, they cannot share the same name as their parent Panel._
 
-An example of a HTML template that demonstartes all component variations is as follows:
+An example of an HTML template that demonstrates all component variations is as follows.
+
 ```HTML
 <div>
     <p>{var:Var1}</p>         -- A variable is defined at the root of the page
@@ -28,7 +29,8 @@ An example of a HTML template that demonstartes all component variations is as f
 </div>
 ```
 ## Populating an HTML Template
-Once an HTML template has been built it can be loaded using a `\B2U\Core\HTMLTemplate` class instance. Loading an HTML template using this class will parse and construct a PHP driver OOP interface to the Panels and Variables within the HTML file. An example of this process using the previous sections HTML template is demonstarted below.
+Once an HTML template has been built, it can be loaded using a `\B2U\Core\HTMLTemplate` class instance. Loading an HTML template using this class will parse and construct a PHP derived OOP interface to the HTML file's Panels and Variables. An example of this process using the previous sections HTML template is demonstrated below.
+
 ```PHP
 $page = new \B2U\Core\HTMLTemplate("slash_terminated_template_file_directory/", "template_name.html");
 
