@@ -1,7 +1,7 @@
 # \B2U\Core\Manager
 The ***Manager*** is a Singletone object, which means it will only have one instance of it allocated for the entire duration of the script execution, and that it provides interfaces to access most of the framework's objects via defined accessors.
 
-## Methods
+# Methods
 ```PHP 
 Manager::instance()
 ```
@@ -73,7 +73,7 @@ The $config is an array that is used to provide data to setup the framework and 
    "Include" => // Array of strings
 ]
 ```
-***@note -*** _If the Plugin's Actions are in a `namespace` then the files containing the Action's deinition should include `return __NAMESPACE__;` as the last line of code within the file so that the framework would be able to determine the correct class objects that needs to be instantiated on any given Action call._
+***@note -*** _If the Plugin's Actions are in a `namespace` then the files containing the Action's definition should include `return __NAMESPACE__;` as the last line of code within the file so that the framework would be able to determine the correct class objects that needs to be instantiated on any given Action call._
 
 3) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology) for more details. Modules are added under each Interface main category, following the format below. Each Module will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded, or the path to a specific file that contains the `module_name class` or an `_autoload` function.
 
