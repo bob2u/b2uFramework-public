@@ -1,6 +1,6 @@
 # \B2U\Core\Manager
 
-[Back](https://github.com/bob2u/b2uFramework-public/blob/master/README_MANAGER.md#the-b2ucore-namespace)
+[Back](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#the-b2ucore-namespace)
 
 The ***Manager*** is a Singletone object, which means it will only have one instance of it allocated for the script execution duration. It provides interfaces to access most of the framework's objects via defined accessors.
 
