@@ -1,4 +1,7 @@
 # \B2U\Core\Manager
+
+[Back](https://github.com/bob2u/b2uFramework-public/blob/master/README_MANAGER.md#the-b2ucore-namespace)
+
 The ***Manager*** is a Singletone object, which means it will only have one instance of it allocated for the script execution duration. It provides interfaces to access most of the framework's objects via defined accessors.
 
 # Methods
@@ -120,3 +123,5 @@ Manager::instance()->callEndpoint($endpoint, $request, $data, $session = true)
 @param **$session** - `bool` - Default `true`, Indicates if Session cookie data should be sent to the target $endpoint.
 
 @return - \[`Mixed`, `int`] - Returns the cURL call results, and HTTP response code from making the request - throws` \Exception` on any errors.
+
+[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README_MANAGER.md#b2ucoremanager)
