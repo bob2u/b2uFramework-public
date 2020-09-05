@@ -1,5 +1,10 @@
+# \B2U\Core\Action
 
 [Back](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#the-b2ucore-namespace)
+
+@see [Terminology:Action](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology)
+
+* **Action (File/Class) -** An Action is a specific .php file where the file name corresponds to the API endpoint under the Plugin directory. The Action's .php file will contain a class with the same name as the Action file. An Action performs a set of specific tasks (i.e., Methods). 
 
 * **Method (Function) -** A Method is a unique function within an Action class that will execute a task when requested. The _Default_ Method for all Actions is their `__construct(...)`
 
