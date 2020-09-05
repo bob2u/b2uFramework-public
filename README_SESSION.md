@@ -1,4 +1,7 @@
 # \B2U\Core\Session
+
+[Back](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#the-b2ucore-namespace)
+
 b2uFramework provides basic session management through the `\B2U\Core\Session` object, which encapsulates calls to PHP's session_* functions and the `$_SESSION` superglobal and uses the default PHP session handler - unless overridden.
 
 ***@note -*** _It is not recommended to use the default PHP session handler on shared hosting environments. It is strongly recommended to use the  `Session::setHandlers()` feature to implement a custom database-driven session handler._
@@ -98,3 +101,5 @@ This function should get called generally once a significant event that elevates
 Session::instance()->destroy()
 ```
 Destroys the current session active session and cookie values.
+
+[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README_SESSION.md#b2ucoresession)
