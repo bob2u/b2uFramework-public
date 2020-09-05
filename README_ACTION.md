@@ -1,3 +1,6 @@
+
+[Back](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#the-b2ucore-namespace)
+
 * **Method (Function) -** A Method is a unique function within an Action class that will execute a task when requested. The _Default_ Method for all Actions is their `__construct(...)`
 
 A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method` Parameters can be passed vai `$_GET` by either calling: 
