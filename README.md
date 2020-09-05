@@ -31,7 +31,7 @@ There are a few basic concepts that have been established in order to help to un
 
 A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`
 
-@see [\B2U\Core\Action]() for more details about b2uFramework request URL
+@see [\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README_ACTION.md#b2ucoreaction) for more details about b2uFramework request URL
 
 * **Interface -** The primary use of an Interface is to maintain a single instance access to some resources that lives once through the execution of the entire script, which is one that will not require multiple instances. These are entrypoints into new/extended functionality that can be added to the framework, and used/re-used by the application's Plugins as well as other Interfaces. Each Interface can provide access to the any number of modules they support. Common pre-defined Interface categories are:
 
@@ -58,7 +58,9 @@ If the server configuration is setup correctly, accessing the root URL will run 
 b2uFramework works by redirecting request to the site through ***index.php*** and from there routing it to the appropriate `Plugin / Action / Method` for processing.
 
 ## Understanding index.php
-The ***index.php*** provided with the framework is required, and contains a basic setup for any given site. First, it defines a default `class index`, which is optional, and can be removed once the site's root directory is re-defined. Second, it contains (2) two calls to the `\B2U\Core\Manager` that initialize and run the site. ***index.php*** works as a default Action for the _root directory_ Plugin, with a default `__constuct(...)` Method.
+The ***index.php*** provided with the framework is required, and contains a basic setup for any given site. First, it defines a default `class index`, which is optional, and can be removed once the site's root directory is re-defined. Second, it contains (2) two calls to the `\B2U\Core\Manager` that initialize and run the site. 
+
+***index.php*** works as a default **Action** for the _root directory_ **Plugin**, with a default `__constuct(...)` **Method**.
 ```php
 <?php
 include("b2u.min.php");
