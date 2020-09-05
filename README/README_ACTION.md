@@ -14,3 +14,5 @@ or
 Calling `www.sitename.com/plugin/action` with no Method will execute the `__construct(...)` of the Action class.
 
 Calling `www.sitename.com/plugin` with no Action will execute the ***index.php***'s `class index`'s `__construct(...)`, and if either does not exists the site will throw an exception.
+
+[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
