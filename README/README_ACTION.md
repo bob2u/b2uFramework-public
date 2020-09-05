@@ -2,13 +2,15 @@
 
 [Back](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#the-b2ucore-namespace)
 
-@see [Terminology:Action](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology)
+The cornerstone of using b2uFramework is the creation of Actions. As defined earlier, @see [Terminology:Action](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology), an Action is a specific .php file where the file name corresponds to the API endpoint under the Plugin directory. The Action's .php file will contain a class with the same name as the Action file. An Action performs a set of specific tasks (i.e., Methods). Also, to recap, A Method is a unique function within an Action class that will execute a task when requested.
 
-* **Action (File/Class) -** An Action is a specific .php file where the file name corresponds to the API endpoint under the Plugin directory. The Action's .php file will contain a class with the same name as the Action file. An Action performs a set of specific tasks (i.e., Methods). 
+Plugins, Actions, and Methods build request URLs into the b2uFramework. A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`
 
-* **Method (Function) -** A Method is a unique function within an Action class that will execute a task when requested. The _Default_ Method for all Actions is their `__construct(...)`
+In the section [Understanding index.php](https://github.com/bob2u/b2uFramework-public#understanding-indexphp) the default Action located in our directory root can be found - `class index`.
 
-A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method` Parameters can be passed vai `$_GET` by either calling: 
+* **Method (Function) -**  The _Default_ Method for all Actions is their `__construct(...)`
+
+ Parameters can be passed vai `$_GET` by either calling: 
 
 `www.sitename.com/plugin/action/method/var1/var2/var3...`
 
