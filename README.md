@@ -27,19 +27,11 @@ contact [@t] manavi [.T] co
 There are a few basic concepts that have been established in order to help to understand the flow of data within this framework. These key concepts are:
 * **Plugin (Directory) -** Plugins in b2uFramework are reusable website/application specific components. These components are organized under directories, and the given directory name corresponds to an API endpoint. A Plugin can contain one or many Actions.
 * **Action (File/Class) -** An Action is a specific .php file where the file name corresponds to the API endpoint under the Plugin directory. The Action's .php file will contain a class with the same name as the Action file. An Action performs a set of specific tasks (i.e. Methods). 
-* **Method (Function) -** A Method is a unique function within an Action class that will execute a task when requested. The _Default_ Method for all Actions is their `__construct(...)`
+* **Method (Function) -** A Method is a unique function within an Action class that will execute a task when requested.
 
-A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method` Parameters can be passed vai `$_GET` by either calling: 
+A typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`
 
-`www.sitename.com/plugin/action/method/var1/var2/var3...`
-
-or 
-
-`www.sitename.com/plugin/action/method?var1_name=var1=&var2_name=var2&var3_name=var3...`
-
-Calling `www.sitename.com/plugin/action` with no Method will execute the `__construct(...)` of the Action class.
-
-Calling `www.sitename.com/plugin` with no Action will execute the ***index.php***'s `class index`'s `__construct(...)`, and if either does not exists the site will throw an exception.
+@see [\B2U\Core\Action]() for more details about b2uFramework request URL
 
 * **Interface -** The primary use of an Interface is to maintain a single instance access to some resources that lives once through the execution of the entire script, which is one that will not require multiple instances. These are entrypoints into new/extended functionality that can be added to the framework, and used/re-used by the application's Plugins as well as other Interfaces. Each Interface can provide access to the any number of modules they support. Common pre-defined Interface categories are:
 
