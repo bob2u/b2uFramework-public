@@ -62,7 +62,7 @@ b2uFramework works by redirecting a request to the site through ***index.php*** 
 ## Understanding index.php
 The ***index.php*** provided with the framework is required and contains a basic setup for any given site. First, it defines a default `class index`, which is optional, and can be removed once the site's root directory is re-defined. Second, it contains (2) two calls to the `\B2U\Core\Manager` that initialize and run the website. 
 
-***index.php*** works as a default **Action** for the _root directory_ **Plugin**, with a default `__constuct(...)` **Method**.
+***index.php*** works as a default [**Action**](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction) for the _root directory_ **Plugin**, with a default `__constuct(...)` **Method**.
 ```php
 <?php
 include("b2u.min.php");
