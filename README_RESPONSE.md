@@ -32,6 +32,8 @@ setContent($content)
 ```PHP 
 send($request_type)
 ```
+@param **$request_type** - `string` - A value of `GET`. `POST`, `PUT`, `DELETE`, and most commonly `HEAD`.
+
 This function will send headers back to a requester and terminate the PHP execution. It is typically called by the `\B2U\Core\Manager\` via `run()` or `respond()` functions, and would rarely be called by an application directly.
 
 ***@note -*** _When sending content back without a predefined `"Content-Type"` header, then this function will make every attempt to determine the type associated with the content. If it is unable to identify the content type, then it will throw an `\Exception`._
