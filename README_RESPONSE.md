@@ -32,7 +32,7 @@ setContent($content)
 ```PHP 
 send($request_type)
 ```
-@param **$request_type** - `string` - A value of `GET`. `POST`, `PUT`, `DELETE`, and most commonly `HEAD`.
+@param **$request_type** - `string` - A value of `GET`. `POST`, `PUT`, `DELETE`, or `HEAD`.
 
 This function will send headers back to a requester and terminate the PHP execution. It is typically called by the `\B2U\Core\Manager\` via `run()` or `respond()` functions, and would rarely be called by an application directly.
 
