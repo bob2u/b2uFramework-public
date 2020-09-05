@@ -163,7 +163,7 @@ Manager::instance()->setup($config)
 ```
 @param **$config** - `Array` - Allow customization of the application by setting up the main routing and site configuration parameters.
 
-The $config is an array that is used to provide 3 main sections:
+The $config is an array that is used to provide data to setup the framework and the application, and it consists of the following sections:
 
 1) **Includes** - An `Array of strings` for any global include files that should be loaded on each request, and any defintions that need to be made available to all Plugins and Interfaces.
 
@@ -186,6 +186,15 @@ The $config is an array that is used to provide 3 main sections:
    "namespace\model_name class" => [
       "Path" =>   // string
    ]
+]
+```
+
+4) **Session** - (Optional) The session can be configured at startup to control its life span, and how/when to delete obsolete sessions. Values for all timing parameters are in seconds.
+
+```php
+[
+   "Life" =>    // int - Default 1800
+   "Kill" =>    // int - Default 300
 ]
 ```
 ##
@@ -252,6 +261,12 @@ This function can only be called prior to any calls to `\B2U\Core\Manager::insta
 ```PHP 
 Session::instance()->getCsrfToken()
 ```
+@return - `string` - Depending on the type of request (i.e. form, AJAX) the value for CSRF token can be retrieved via different channels. This function makes getting the token value simpler by consolidating calls to extract the token data. Order of operations for extracting are: 1. AJAX header, 2. GET/POST parameters, and 3. Cookie. This function returns `NULL` if token is not found.
+
+***@note -*** _The token name used in GET/POST and cookies must be "csrftoken"._
+
+***@note -*** _The header name used in AJAX requests must be "X-CSRF-TOKEN"._
+
 ##
 ```PHP 
 Session::instance()->validate($csrf_token = false)
