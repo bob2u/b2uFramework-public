@@ -45,4 +45,55 @@ $page->PanelA->PanelB->Var3->setValue("b2uFramework!");
 $page->PanelA->PanelB->setVisible(false);
 ```
 
+# Methods
+```PHP
+\B2U\Core\HTMLTemplate
+    __construct($dir, $file)
+```
+##
+```PHP
+\B2U\Core\HTMLTemplate
+    addKey($key, $value)
+```
+##
+```PHP
+\B2U\Core\HTMLTemplate
+    exists($key)
+```
+##
+```PHP
+\B2U\Core\HTMLTemplate
+    getContent()
+```
+##
+```PHP
+\B2U\Core\HTMLPanel
+    setVisible($val)
+```
+##
+```PHP
+\B2U\Core\HTMLPanel
+    isVisible()
+```
+##
+```PHP
+\B2U\Core\HTMLPanel
+    exists($key)
+```
+##
+```PHP
+\B2U\Core\HTMLPanel
+    getContent()
+```
+##
+```PHP
+\B2U\Core\HTMLAttribute
+    setValue($val)
+```
+##
+```PHP
+\B2U\Core\HTMLAttribute
+    getValue()
+```
+
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README_TEMPLATE.md#b2ucorehtmltemplate)
