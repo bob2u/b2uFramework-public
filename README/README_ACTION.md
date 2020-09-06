@@ -121,6 +121,6 @@ must be called. The same rule applies to `$_POST` requests. Furthermore, notice 
 ```
 @return - `Array` - Returns the instance of the `$this->Parameters` array.
 
-This function is called by the b2uframework prior to calling an Action's Method in order to provide plugin developers the ability to modify the data in the `$this->Parameters` array. This is useful in cases where a plugin will generate data in arbitrary fields, and the developer would want these to be accessible through the `Parameters` array as first-level key-value entry. An examlpe is available in the B2uPanelAction as part of the b2upanel jQuery plugin.
+The b2uframework calls this function before calling an Action's Method to provide plugin developers the ability to modify the data in the `$this->Parameters` array. This is useful in cases where a plugin will generate data in arbitrary fields, and the developer would want these to be accessible through the `Parameters` array as a first-level key-value entry. An example is available in the B2uPanelAction as part of the b2upanel jQuery plugin.
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
