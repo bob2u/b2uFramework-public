@@ -11,7 +11,7 @@ In practice, each _Module_ would be contained within a directory. Using the `\B2
 Once an Interface's Module is loaded into the executing script, then it is treated as a singleton for the duration of the script's execution and always accessible across all Actions and Modules.
 
 ## Defining a Module
-The syntax for defining a Module class begins with deriving a class from `\B2U\Core\Module` and implementing `\B2U\Core\IInterface`. Then the default constructor must be overloaded if the _Module_ has dependencies to other _Interfaces_ or _Modules_.
+The syntax for defining a Module class begins with deriving a class from `\B2U\Core\Module` and implementing `\B2U\Core\IInterface`. The default constructor must only be overloaded if the _Module_ has dependencies to other _Modules_ within the same or other _Interfaces_.
 
 ```PHP
 <?php
