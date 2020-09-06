@@ -108,6 +108,10 @@ or
 ```
 www.sitename.com/plugin_name/action_name/isvalid?status=Y
 ```
-must be called. For a `$_POST` type request, the parameter **status** will need to be provided by the request. Furthermore, notice that the value is passed via the URL path in the first URL, as opposed to the second URL, where the parameter **status** is visible in the query string. This works in the first cases since the b2uFramework will know to assign the first path section after the Method name in the URL to the Method's first argument in the function's signature.
+must be called. The same rule applies to `$_POST` requests. Furthermore, notice that the value is passed via the URL path in the first URL, as opposed to the second URL, where the parameter **status** is visible in the query string. This works in the first cases since the b2uFramework will know to assign the first path section after the Method's name in the URL to the Method's first argument in the function's signature.
+
+***@note -*** _Passing the first argument in both the URL path and query string, or `$_POST` parameters, will give higher priority to the value provided via the query string or `$_POST` parameter, over the path URL._
+
+***@note -*** _In some instances the Method may want to provide optional parameters as part of the function signature. This can be achieved by assigning a default value to the argument in the function signature (e.g., In the above example `public function isvalid($status = "Y")`)._
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
