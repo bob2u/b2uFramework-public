@@ -100,7 +100,7 @@ public function isvalid($status) {
 ```
 Now calling the above example using the same request URL will result in an `\Exception` stating `Missing required endpoint parameter (status)!`.
 
-Notice that the endpoint `isvalid` is requiring (1) parameter with the name **status** - as defined in the Method's argument list. In order to provide that argument to the Method a request URL such as:
+Notice that the endpoint `isvalid` requires (1) parameter with the name **status** - as defined in the Method's argument list. To provide that argument to the Method a request URL such as
 ```
 www.sitename.com/plugin_name/action_name/isvalid/Y/
 ```
@@ -108,6 +108,6 @@ or
 ```
 www.sitename.com/plugin_name/action_name/isvalid?status=Y
 ```
-must be called. For a `$_POST` type request the parameter **status** will need to be provided by the request. 
+must be called. For a `$_POST` type request, the parameter **status** will need to be provided by the request. Furthermore, notice that the value is passed via the URL path in the first URL, as opposed to the second URL, where the parameter **status** is visible in the query string. This works in the first cases since the b2uFramework will know to assign the first path section after the Method name in the URL to the Method's first argument in the function's signature.
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
