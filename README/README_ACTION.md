@@ -53,7 +53,7 @@ The default Method for all Actions is their `__construct(...)`, and recall that 
 
 ***@note -*** _Calling `www.sitename.com/plugin/action` with no Method will execute the `__construct(...)` of the Action class._
 
-It is important to note that it is possible to call a Plugin in a request URL with no Action and Method defined. This special case is treated by the b2uFramework as a unique Action call to an Action file named ***index.php*** with a `class index` declaration. Following the default Method rule, the `class index`'s `__construct(...)` will be called. A good example of this use case can be seen in the b2uFramework's own entry point - @see [Understanding index.php](https://github.com/bob2u/b2uFramework-public#understanding-indexphp).
+It is important to note that it is possible to call a Plugin in a request URL with no Action and Method. The b2uFramework treats this particular case as a unique Action call to an Action file named ***index.php*** with a `class index` declaration. Following the default Method rule, the `class index`'s `__construct(...)` will be called. An excellent example of this use case can be seen in the b2uFramework's entry point - @see [Understanding index.php](https://github.com/bob2u/b2uFramework-public#understanding-indexphp).
 
 ***@note -*** _Calling `www.sitename.com/plugin` with no Action will execute the ***index.php***'s `class index`'s `__construct(...)`, and if either does not exists the site will throw an exception._
 
