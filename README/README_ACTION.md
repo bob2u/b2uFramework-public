@@ -67,7 +67,11 @@ Parameters can be passed vai `$_GET` by either calling:
 
 or 
 
+`www.sitename.com/plugin/?var1_name=var1=&var2_name=var2&var3_name=var3...`
+`www.sitename.com/plugin/action/?var1_name=var1=&var2_name=var2&var3_name=var3...`
 `www.sitename.com/plugin/action/method?var1_name=var1=&var2_name=var2&var3_name=var3...`
+
+To access these parameters, all Action Method's can reference the `$this->Parameters` member, which is an associative `Array` of all `$_GET` parameters accessible via their names as a key index into the array. 
 
 ## Declaring New Methods
 
