@@ -13,16 +13,50 @@ Understanding _Plugins_ is a prerequisite to understanding _Actions_. Although t
 * Plugins are not Interfaces, but rather portions of an actual website/application
 * Plugins can have one or more common themed Actions defined within them
 
-One example of a Plugin for a website could be a **User Profile** Plugin. This Plugin, if designed generically and adequately, can be used in other website projects. A User Profile Plugin may have multiple Actions organized based on roles (e.g., Admin, User) or only one Action to manage all functionalities for a user's profile. These functionalities, or Methods, can include _profile image upload_, _account validation_, _password reset_, _profile detail update_, etc.
+One example of a Plugin for a website could be a **User Profile** Plugin. This Plugin, if designed generically and adequately, can be used in other website projects. A User Profile Plugin may have multiple Actions organized based on roles (e.g., Admin, User) or only one Action to manage all functionalities for a user's profile. These functionalities, or Methods, can include _profile image upload_, _account validation_, _profile detail update_, etc.
 
 In the above example, we can see that the Plugin represents a single theme (_User Profile_), and it is a unite module within a website that can be re-used in other web projects as needed.
 
 ***@note -*** _Plugins are required and will always be the first portion of any b2uFramework request URL. They may even be the only portion (e.g., `www.sitename.com/plugin`), which will be explained later._
 
+***@note -*** _Plugin directory names should not include spaces and should only contain URL compatible characters._
+
 ## Constructing an Action
+An Action is a PHP file within a Plugin directory. To create an Action:
+1) Create a PHP file named after the Action it will represent. The file name is the `/action/` portion in a request URL. Guidelines for naming Actions include:
+   * Case sensitive
+   * Should follow PHP naming conventions for naming, and 
+   * Should only contain URL compatible characters.
+   * Use of all lowercase letters and "_" are recommended.
+2) Declare a PHP `class` using the same name as the Action file.
+3) Derive the class from the required `\B2U\Core\Action` class and `\B2U\Core\IAction` interface.
+4) Define the required `__construct(& $params, & $response)` method.
+5) Initialize the parent.
+
+Once all steps have been completed the following should be the final output present:
+```PHP
+<?php
+// The following code would be declared in action_name.php file located in plugin_name/ directory
+class action_name extends \B2U\Core\Action implements \B2U\Core\IAction {
+
+    // Default Method for all actions is the constructor
+    function __construct(& $params, & $response) {
+    
+        // This is a required call for all Actions
+        parent::__construct($params, $response);
+    }
+    
+    // Define other methods here ...
+}
+```
+The default Method for all Actions is their `__construct(...)`, therefor calling `www.sitename.com/plugin_name/action_name` will execute the `__construct(...)` of the `action_name` class. Recall tha the Method would come **after** the `/action/` portion of a request URL (i.e., `/plugin/action/method`).
+
+***@note -*** _Calling `www.sitename.com/plugin/action` with no Method will execute the `__construct(...)` of the Action class._
 
 
-* **Method (Function) -**  The _Default_ Method for all Actions is their `__construct(...)`
+
+
+
 
  Parameters can be passed vai `$_GET` by either calling: 
 
