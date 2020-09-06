@@ -75,7 +75,11 @@ www.sitename.com/plugin/action/?var1_name=var1=&var2_name=var2&var3_name=var3...
 www.sitename.com/plugin/action/method?var1_name=var1=&var2_name=var2&var3_name=var3...
 ```
 
-To access these parameters, all Action Method's can reference the `$this->Parameters` member, which is an associative `Array` of all `$_GET` parameters accessible via their 0 based numeric index - if passed via the URL path, or their names - if given as an argument in a query string, as a key index into the array. 
+To access these parameters, all Action Method's can reference the `$this->Parameters` member, which is an associative `Array` of all `$_GET` parameters accessible via their 0 based numeric index - if passed via the URL path, or their names - if given as an argument in a query string, as a key index into the array.
+
+***@note -*** _Parameters passed via `$_POST` are also accessible using the same `$this->Parameters` array. The only detail being that `$_POST` parameters have higher priority over `$_GET` when reserving a key in the `$this->Parameters` array._
+
+***@note -*** _Parameters passed via `$_FILE` are also accessible using the same `$this->Parameters` array. The only detail being that all file(s) details will be accessible under a special `"_FILES"` key._
 
 ## Declaring New Methods
 
