@@ -8,7 +8,34 @@ For example, the most common _Interface_ category would be the **Database** cate
 
 In practice, each _Module_ would be contained within a directory. Using the `\B2U\Core\Manager\`'s `setup(...)` functionality, an application would load these libraries into the b2uFramework for use by all Actions and other Interfaces/Modules. @see [\B2u\Core\Manager](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MANAGER.md#methods) for details on how to use `getInterface()`.
 
+Once an Interface's Module is loaded into the executing script, then it is treated as a singleton for the duration of the script's execution and always accessible across all Actions and Modules.
+
 ## Defining a Module
-The syntax for defining a Module class begins with deriving from 
+The syntax for defining a Module class begins with deriving a class from `\B2U\Core\Module` and implementing `\B2U\Core\IInterface`. Then the default constructor must be overloaded if the _Module_ has dependencies to other _Interfaces_ or _Modules_.
+
+```PHP
+<?php
+class module_name extends \B2U\Core\Module implements \B2U\Core\IInterface {
+
+    // The default constructor with the specific signature is required when a
+    // Module want to declare dependencies to other Interfaces and/or Modules
+    public function __construct(...$args) {
+    }
+}
+```
+# Methods
+```PHP
+\B2U\Core\Module
+    uses($interface, $module, ...$args)
+```
+@param **$interface** - `string` - Name of supported Interface category.
+
+@param **$module** - `string` - Name of a defined Module within the Interface category.
+
+@param **$args** - `Array` - A packed list of variable arguments to be supplied to the Module's constructor. This PHP feature allows a function to take a variable number of arguments, depending on its signature.
+
+This function ***MUST*** be called from within the `__construct(...$args)` of another Module. The purpose of this function is to force a Module to load another Interface's Module, or within the same Interface, and to provide a means to access the instance without going through `\B2U\Core\Manager`. Furtheremore, using this method to declare dependencies will ensure all required Interfaces are available to a given b2uFramework-based application.
+
+Once the `use` has resolved, a Module can access the dependent Module by using the `$this->Interface` array parameter, and providing the `"{interface_name}_{module_name}"` as the key index into the array.
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
