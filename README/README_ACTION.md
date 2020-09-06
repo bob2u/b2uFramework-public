@@ -112,6 +112,15 @@ must be called. The same rule applies to `$_POST` requests. Furthermore, notice 
 
 ***@note -*** _Passing the first argument in both the URL path and query string, or `$_POST` parameters, will give higher priority to the value provided via the query string or `$_POST` parameter, over the path URL._
 
-***@note -*** _In some instances the Method may want to provide optional parameters as part of the function signature. This can be achieved by assigning a default value to the argument in the function signature (e.g., In the above example `public function isvalid($status = "Y")`)._
+***@note -*** _In some instances, a Method may want to provide optional parameters as part of its function signature. This can be achieved by assigning a default value to the argument in the function signature (e.g., In the above example `public function isvalid($status = "Y")` will allow calls to the Method with or without the **status** parameter)._
+
+# Methods
+```PHP
+\B2U\Core\Action
+    modifyRequest()
+```
+@return - `Array` - Returns the instance of the `$this->Parameters` array.
+
+This function is called by the b2uframework prior to calling an Action's Method in order to provide plugin developers the ability to modify the data in the `$this->Parameters` array. This is useful in cases where a plugin will generate data in arbitrary fields, and the developer would want these to be accessible through the `Parameters` array as first-level key-value entry. An examlpe is available in the B2uPanelAction as part of the b2upanel jQuery plugin.
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
