@@ -57,15 +57,20 @@ It is important to note that it is possible to call a Plugin in a request URL wi
 
 ***@note -*** _Calling `www.sitename.com/plugin` with no Action will execute the ***index.php***'s `class index`'s `__construct(...)`, and if either does not exists the site will throw an exception._
 
+***@note -*** _A `\B2U\Core\Response` must be sent back to the requester for all requests sent to the b2uFranework. The `\B2U\Core\Response` object is accessible to all Action's Methods, including the `__consturct(...)`, via the `$this->Response` parameter. An `\Exception` is thrown if a response with a valid content is not sent back to the requester. @see [\B2U\Core\Response](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_RESPONSE.md#b2ucoreresponse) for more details._
+
 ## Processing Request Parameters
 
- Parameters can be passed vai `$_GET` by either calling: 
+Parameters can be passed vai `$_GET` by either calling: 
 
 `www.sitename.com/plugin/action/method/var1/var2/var3...`
 
 or 
 
 `www.sitename.com/plugin/action/method?var1_name=var1=&var2_name=var2&var3_name=var3...`
+
+## Declaring New Methods
+
 
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
