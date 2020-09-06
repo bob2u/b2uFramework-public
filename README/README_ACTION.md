@@ -82,7 +82,32 @@ To access these parameters, all Action Method's can reference the `$this->Parame
 ***@note -*** _Parameters passed via `$_FILE` are also accessible using the same `$this->Parameters` array. The only detail is that all file(s)'s details will be accessible under a special `"_FILES"` key, and with this key having the highest priority over all key-values in the `Parameters` array._
 
 ## Declaring New Methods
+Not all Action will use their default `__construct(...)` Method, or rely solely on it. To this effect, developers can define their Methods that will be automatically exposed through the request URL format.
 
+A simple Method is one that does not require any arguments to be passed in.
+```PHP
+public function isvalid() {
+    $this->Response->setHeader("Content-Type", "text/html")->setContent("Yes");
+}
+```
+In the above example, calling `www.sitename.com/plugin_name/action_name/isvalid` will print `Yes` to the page.
 
+A complex Method is one that does accept arguments to be passed in via either `$_GET` or `$_POST`.
+```PHP
+public function isvalid($status) {
+    $this->Response->setHeader("Content-Type", "text/html")->setContent($status == "Y" ? "Yes" : "No");
+}
+```
+Now calling the above example using the same request URL will result in an `\Exception` stating `Missing required endpoint parameter (status)!`.
+
+Notice that the endpoint `isvalid` is requiring (1) parameter with the name **status** - as defined in the Method's argument list. In order to provide that argument to the Method a request URL such as:
+```
+www.sitename.com/plugin_name/action_name/isvalid/Y/
+```
+or
+```
+www.sitename.com/plugin_name/action_name/isvalid?status=Y
+```
+must be called. For a `$_POST` type request the parameter **status** will need to be provided by the request. 
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
