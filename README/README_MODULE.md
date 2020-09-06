@@ -37,7 +37,7 @@ Modules must be registered with the `B2u\Core\Manager` via calls to `setup(...)`
 
 @param **$args** - `Array` - A packed list of variable arguments to be supplied to the Module's constructor. This PHP feature allows a function to take a variable number of arguments, depending on its signature.
 
-This function ***MUST*** be called from within the `__construct(...$args)` of another Module. The purpose of this function is to force a Module to load another Interface's Module, or within the same Interface, and to provide a means to access the instance without going through `\B2U\Core\Manager`. Furtheremore, using this method to declare dependencies will ensure all required Interfaces are available to a given b2uFramework-based application.
+This function ***MUST*** be called from within the `__construct(...$args)` of another Module. This function aims to force a Module to load another Interface's Module, or within the same Interface, and provide a means to access the instance without going through `\B2U\Core\Manager`. Furthermore, using this method to declare dependencies will ensure all required Interfaces are available to a given b2uFramework-based application.
 
 Once the `use` has resolved, a Module can access the dependent Module by using the `$this->Interface` array parameter, and providing the `"{interface_name}_{module_name}"` as the key index into the array.
 
