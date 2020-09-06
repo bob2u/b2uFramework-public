@@ -41,4 +41,4 @@ This function ***MUST*** be called from within the `__construct(...$args)` of an
 
 Once the `use` has resolved, a Module can access the dependent Module by using the `$this->Interface` array parameter, and providing the `"{interface_name}_{module_name}"` as the key index into the array.
 
-[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
+[Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MODULE.md#b2ucoremodule)
