@@ -17,7 +17,7 @@ One example of a Plugin for a website could be a **User Profile** Plugin. This P
 
 In the above example, we can see that the Plugin represents a single theme (_User Profile_), and it is a unite module within a website that can be re-used in other web projects as needed.
 
-***@note -** _Plugins are required and will always be the first portion of any b2uFramework request URL. They may even be the only portion (e.g., `www.sitename.com/plugin`), which will be explained later._
+***@note -*** _Plugins are required and will always be the first portion of any b2uFramework request URL. They may even be the only portion (e.g., `www.sitename.com/plugin`), which will be explained later._
 
 ## Constructing an Action
 
