@@ -13,11 +13,11 @@ Understanding _Plugins_ is a prerequisite to understanding _Actions_. Although t
 * Plugins are not Interfaces, but rather portions of an actual website/application
 * Plugins can have one or more common themed Actions defined within them
 
-One example of a Plugin for a website could be a **User Profile** Plugin. This Plugin, if designed generically and adequately, can be used in other website projects. A User Profile Plugin may have multiple Actions organized based on roles (e.g. Admin, User) or only one Action to manage all functionalities for a user's profile. These functionalities, or Methods, can include _profile image upload_, _account validation_, _password reset_, _profile detail update_, etc.
+One example of a Plugin for a website could be a **User Profile** Plugin. This Plugin, if designed generically and adequately, can be used in other website projects. A User Profile Plugin may have multiple Actions organized based on roles (e.g., Admin, User) or only one Action to manage all functionalities for a user's profile. These functionalities, or Methods, can include _profile image upload_, _account validation_, _password reset_, _profile detail update_, etc.
 
 In the above example, we can see that the Plugin represents a single theme (_User Profile_), and it is a unite module within a website that can be re-used in other web projects as needed.
 
-Plugins are the first portion of a b2uFramework request URL, and may even be the only portion (e.g. `www.sitename.com/plugin`), which will be explained later.
+***@note -** _Plugins are required and will always be the first portion of any b2uFramework request URL. They may even be the only portion (e.g., `www.sitename.com/plugin`), which will be explained later._
 
 ## Constructing an Action
 
