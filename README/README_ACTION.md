@@ -63,7 +63,9 @@ It is important to note that it is possible to call a Plugin in a request URL wi
 
 Parameters can be passed vai `$_GET` by either calling: 
 
-`www.sitename.com/plugin/action/method/var1/var2/var3...`
+```
+www.sitename.com/plugin/action/method/var1/var2/var3...
+```
 
 or 
 
