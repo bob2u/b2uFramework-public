@@ -75,7 +75,7 @@ www.sitename.com/plugin/action/?var1_name=var1=&var2_name=var2&var3_name=var3...
 www.sitename.com/plugin/action/method?var1_name=var1=&var2_name=var2&var3_name=var3...
 ```
 
-To access these parameters, all Action Method's can reference the `$this->Parameters` member, which is an associative `Array` of all `$_GET` parameters accessible via their names as a key index into the array. 
+To access these parameters, all Action Method's can reference the `$this->Parameters` member, which is an associative `Array` of all `$_GET` parameters accessible via their 0 base numeric index - _if passed via the URL path_, or their names - _if given as an argument in a query string_, as a key index into the array. 
 
 ## Declaring New Methods
 
