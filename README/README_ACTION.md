@@ -5,10 +5,22 @@
 The cornerstone to using the b2uFramework is the creation of _Actions_ within _Plugins_. As defined earlier, @see [Terminology](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology), _Plugins_, _Actions_, and _Methods_ define the components of request URLs sent to the b2uFramework for processing. While not all parts are required in a valid request, a typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`.
 
 ## Understanding Plugins
-Understanding _Plugins_ is a prerequisite to understanding _Actions_ 
+Understanding _Plugins_ is a prerequisite to understanding _Actions_. Although the representation of _Plugins_ is simple (i.e., It is a Directory), the conceptual use may be alien to some developers. To help identify what would constitute to a _Plugin_ the following guidelines are recommended:
+
+* A Plugin represents a single theme
+* Plugins are unit modules of a website/application
+* Plugins are re-usable modules of a website/application
+* Plugins are not Interfaces, but rather portions of an actual website/application
+* Plugins can have one or more common themed Actions defined within them
+
+One example of a Plugin for a website could be a **User Profile** Plugin. This Plugin, if designed generically and adequately, can be used in other website projects. A User Profile Plugin may have multiple Actions organized based on roles (e.g. Admin, User) or only one Action to manage all functionalities for a user's profile. These functionalities, or Methods, can include _profile image upload_, _account validation_, _password reset_, _profile detail update_, etc.
+
+In the above example, we can see that the Plugin represents a single theme (_User Profile_), and it is a unite module within a website that can be re-used in other web projects as needed.
+
+Plugins are the first portion of a b2uFramework request URL, and may even be the only portion (e.g. `www.sitename.com/plugin`), which will be explained later.
 
 ## Constructing an Action
-As an example we will create a _Plugin_ to manage all our application accounts, called _Account_. We will create a folder called _Account_ within our application root directory.
+
 
 * **Method (Function) -**  The _Default_ Method for all Actions is their `__construct(...)`
 
