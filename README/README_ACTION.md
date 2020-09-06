@@ -21,6 +21,9 @@ In the above example, we can see that the Plugin represents a single theme (_Use
 
 ***@note -*** _Plugin directory names should not include spaces and should only contain URL compatible characters._
 
+### Assigning Plugins via \B2u\Core\Manager
+Plugins must be registered with the `B2u\Core\Manager` via calls to `setup(...)`. @see [Manager::setup()](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MANAGER.md#methods).
+
 ## Constructing an Action
 An Action is a PHP file within a Plugin directory. To create an Action:
 1) Create a PHP file named after the Action it will represent. The file name is the `/action/` portion in a request URL. Guidelines for naming Actions include:
@@ -32,6 +35,8 @@ An Action is a PHP file within a Plugin directory. To create an Action:
 3) Derive the class from the required `\B2U\Core\Action` class and `\B2U\Core\IAction` interface.
 4) Define the required `__construct(& $params, & $response)` method.
 5) Initialize the parent.
+
+***@note -*** _If the Action is in a `namespace`, then the file containing the Action's definition should include `return __NAMESPACE__;` as the last line of code within the file so that the framework would be able to determine the correct class objects that need to be instantiated on any given Action call._
 
 Once all steps have been completed, the following should be the final output present:
 ```PHP
@@ -49,6 +54,7 @@ class action_name extends \B2U\Core\Action implements \B2U\Core\IAction {
     // Define other Methods here ...
 }
 ```
+
 The default Method for all Actions is their `__construct(...)`, and recall that the Method would come **after** the `/action/` portion of a request URL (i.e., `www.sitename.com/plugin/action/method`); therefore, calling `www.sitename.com/plugin_name/action_name` will execute the `__construct(...)` of the `action_name` class since no Method is called in the URL, and the default Method is the class constructor.
 
 ***@note -*** _Calling `www.sitename.com/plugin/action` with no Method will execute the `__construct(...)` of the Action class._
