@@ -2,7 +2,7 @@
 
 [Back](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#the-b2ucore-namespace)
 
-The cornerstone to using the b2uFramework is the creation of _Actions_ within _Plugins_. As defined earlier, @see [Terminology](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology), _Plugins_, _Actions_, and _Methods_ define the components of request URLs sent to the b2uFramework for processing. While not all parts are required in a valid request, a typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`.
+The cornerstone to using the b2uFramework is the creation of _Actions_ within _Plugins_. As defined earlier, @see [Terminology](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology), _Plugins_, _Actions_, and _Methods_ define the components of request URLs sent to the b2uFramework for processing. While not all parts are required in a valid request, a typical request to the b2uFramework will look like: `www.sitename.com/plugin/action/method`. Keep this in mind while reading the sections in this document.
 
 ## Understanding Plugins
 Understanding _Plugins_ is a prerequisite to understanding _Actions_. Although the representation of _Plugins_ is simple (i.e., It is a Directory), the conceptual use may be alien to some developers. To help identify what would constitute to a _Plugin_ the following guidelines are recommended:
