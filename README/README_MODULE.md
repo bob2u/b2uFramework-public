@@ -23,6 +23,9 @@ class module_name extends \B2U\Core\Module implements \B2U\Core\IInterface {
     }
 }
 ```
+### Assigning Interface Modules via \B2u\Core\Manager
+Modules must be registered with the `B2u\Core\Manager` via calls to `setup(...)`. @see [Manager::setup()](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MANAGER.md#methods).
+
 # Methods
 ```PHP
 \B2U\Core\Module
