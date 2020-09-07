@@ -30,6 +30,8 @@ An example of an HTML template that demonstrates all component variations is as 
     <!--panel:PanelA-->       -- PanelA section closing 
 </div>
 ```
+
+3. **Includes** - Includes allow a template to broken into other template pages, and _included_ into a single document using the `{include:path_to_file}` syntax.
 ## Populating an HTML Template
 Once an HTML template has been built, it can be loaded using a `\B2U\Core\HTMLTemplate` class instance. Loading an HTML template using this class will parse and construct a PHP derived OOP interface to the HTML file's Panels and Variables. An example of this process using the previous sections HTML template is demonstrated below.
 
