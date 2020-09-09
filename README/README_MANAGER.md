@@ -78,12 +78,31 @@ The $config is an array used to provide data to set up the framework and the app
 ```
 ***@note -*** _If the Plugin's Actions are in a `namespace`, then the files containing the Action's definition should include `return __NAMESPACE__;` as the last line of code within the file so that the framework would be able to determine the correct class objects that need to be instantiated on any given Action call._
 
-3) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology) for more details. Modules are added under each Interface's main category, following the format below. Each Module will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded or the path to a specific file that contains the `module_name class` or an `_autoload` function.
+3) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology). Modules are added under each Interface's main category, following the format below. Each Module will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded or the path to a specific file that contains the `module_name class` or an `_autoload` function.
+
+Modules can also be accessed throughout the application using the `getInterface(...)` method defined previously, but also using a predefined variable name that can be accessed from any PHP file via `\B2U\Core\Manager::instance()->interface_variable_name`. To use Interface Modules with a variable name the `"Name"` parameter should be set. This mechanism will load the Interface Module on first access to the _variable_ (i.e., similar to calling `getInterface(...)`).
+
+***@note -*** _`"Name"` must be unqiue across all application Interface Modules._
+
+When creating Interface Modules using the `getInterface(...)` method, it is possible to pass arguments using the `...$args` parameter. It is also possible to provide these arguments using the `"Args"` parameter within the $config. To pass arguments to Interface Modules using the `"Name"` method it is required to provide the additional arguments using the `"Args"` parameter.
+
+***@note -*** _`...$args` parameter has higher priority over the `"Args"` parameters when used with `getInterface()` method_
+
+It is possible to declare dependencies between interfaces during the setup operation. This is accomplished with the `"Uses"` parameter. `"Uses"` supports a list of dependent Interface Modules. For each Interface Module, a unique variable name is selected within the scope of the parent Module, which defines the Interface Module, and any initializing arguments used by the target Interface Module. This method will automatically load the dependencies when the parent Interface Module is requested and provide a local variable to the Module using the `$this->variable_name` parameter. @see [\B2U\Core\Module](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MODULE.md#b2ucoremodule) for more details.
 
 ```php
 "interface_category" => [
    "namespace\model_name class" => [
+      "Name" =>   // string
       "Path" =>   // string
+      "Args" =>   // Array
+      "Uses" => [
+          "variable_name" => [
+              "interface_category",
+              "module_name",
+              ..."arguments"
+          ]
+      ]
    ]
 ]
 ```
