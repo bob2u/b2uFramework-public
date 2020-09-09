@@ -55,6 +55,15 @@ class A extends \B2U\Core\Module implements \B2U\Core\IInterface {
     }
 }
 ```
+The same interface can also be accessed using the same method as-if `uses` was called to assign the dependency.
+```PHP
+class A extends \B2U\Core\Module implements \B2U\Core\IInterface {
+    public function some_function() {
+        // using {interface category}_{module name}
+        $this->getInterface("Database_B")->query(...);
+    }
+}
+```
 
 # Methods
 ```PHP
@@ -69,6 +78,12 @@ class A extends \B2U\Core\Module implements \B2U\Core\IInterface {
 
 This function ***MUST*** be called from within the `__construct(...$args)` of another Module. This function aims to force a Module to load another Interface's Module, or within the same Interface, and provide a means to access the instance without going through `\B2U\Core\Manager`. Furthermore, using this method to declare dependencies will ensure all required Interfaces are available to a given b2uFramework-based application.
 
-Once the `use` has resolved, a Module can access the dependent Module by using the `$this->Interface` array parameter, and providing the `"{interface_name}_{module_name}"` as the key index into the array.
+Once the `uses` has resolved, a Module can access the dependent Module by using the `$this->Interface` array parameter, and providing the `"{interface_name}_{module_name}"` as the key index into the array.
+##
+```PHP
+\B2U\Core\Module
+    getInterface($name)
+```
+@return - `object` - Function will return the instance, or `NULL`, of the module loaded using `uses(...)` or `setup(...)` configuration following `"{interface_name}_{module_name}"` format for key $name.
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MODULE.md#b2ucoremodule)
