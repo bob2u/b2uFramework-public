@@ -56,6 +56,7 @@ if ($ldap_auth->isUserAuthorized()) {
   ...
 }
 ```
+***@note -*** _There are multiple ways to access Modules in b2uFramework._
 ##
 ```PHP 
 Manager::instance()->setup($config)
