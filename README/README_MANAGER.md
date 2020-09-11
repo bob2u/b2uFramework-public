@@ -47,9 +47,9 @@ This function is used to get an instance to a specific Interface's Module. If th
 
 ***@note -*** _A reference to the old instance will need to be maintained by the application's developer if multiple instances of the same Module are required simultaneously._
 
-In most applications, Interfaces only need a single instance for the duration of the script's execution. But if multiple instances are required, then instead of using this function to create a single instance of a Module, it should be used to point to a factory for the Module, which fits a single instance design pattern. The factory will then be accessible to all scripts to create as many Module instances as needed.
+In most applications, Modules only need a single instance for the duration of the script's execution. But if multiple instances are required, then instead of using this function to create a single instance of a Module, it should be used to point to a factory for the Module, which fits a single instance design pattern. The factory will then be accessible to all scripts to create as many Module instances as needed.
 
-An example of using an Interface would be for user authorization. The example below assumes the application has loaded a Module for LDAP processing.
+An example of using an Interface would be for user authorization, and a Module in it would be LDAP. The example below assumes the application has loaded a Module for LDAP processing.
 ```php
 $ldap_auth = \B2U\Core\Manager::instance()->getInterface("Authorization", "My_LDAP", false, $ldap_config_params, "login_credentials");
 if ($ldap_auth->isUserAuthorized()) {
