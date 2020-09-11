@@ -27,7 +27,7 @@ class module_name extends \B2U\Core\Module implements \B2U\Core\IInterface {
 Modules must be registered with the `B2u\Core\Manager` via calls to `setup(...)`. @see [Manager::setup()](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MANAGER.md#methods).
 
 ### Accessing Dependent Modules via \B2U\Core\Manager
-When the dependencies between interfaces is defined using the `setup(...)` function it is possible to access them within the Module using local variables.
+Dependencies can be defined using the `uses()` method in the constuctor of a Module, or the `"Uses"` section of a Module during the `Manager`'s `setup` call. When the dependencies between interfaces is defined using the `setup(...)` function it is possible to access them within the Module using local variables.
 ```PHP
 ...
 \B2U\Core\Manager::instance()->setup([
