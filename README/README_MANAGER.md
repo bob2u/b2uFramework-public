@@ -45,7 +45,7 @@ Manager::instance()->getInterface($interface = "", $module = "", $new = false, .
 
 This function is used to get an instance to a specific Interface's Module. If the Module is not loaded, this function will first attempt to load it and allocate an instance of the Module within the Interface category. Generally, there is only one (1) instance of a Module for the duration of a script's execution, but new instances can still be created, which will replace the old stored instance on future access. 
 
-***@note -*** _A reference to the old instance will need to be maintained by the application's developer if multiple instances of the same Interface Module are required simultaneously._
+***@note -*** _A reference to the old instance will need to be maintained by the application's developer if multiple instances of the same Module are required simultaneously._
 
 In most applications, Interfaces only need a single instance for the duration of the script's execution. But if multiple instances are required, then instead of using this function to create a single instance of a Module, it should be used to point to a factory for the Module, which fits a single instance design pattern. The factory will then be accessible to all scripts to create as many Module instances as needed.
 
@@ -81,15 +81,15 @@ The $config is an array used to provide data to set up the framework and the app
 
 3) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology). Modules are added under each Interface's main category, following the format below. Each Module will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded, or the path to a specific file that contains the `module_name class` or an `_autoload` function.
 
-    Interface Modules can be accessed by the application using the `getInterface()` method defined previously, and they can also be accessed using a custom variable name that can be accessed using `\B2U\Core\Manager::instance()->user_defined_variable_name` syntax. To use the variable syntax the `"Name"` parameter should be set during setup. This mechanism will load the Interface Module on first access to the custom variable, which is similar to calling `getInterface()` and storing the result in a global variable.
+    Interface's Modules can be accessed by the application using the `getInterface()` method defined previously, and they can also be accessed using a custom variable name that can be accessed using `\B2U\Core\Manager::instance()->user_defined_variable_name` syntax. To use the variable syntax the `"Name"` parameter should be set during setup. This mechanism will load the Module on first access to the custom variable, which is similar to calling `getInterface()` and storing the result in a global variable.
 
-    ***@note -*** _`"Name"` must be unqiue across all application Interface Modules._
+    ***@note -*** _`"Name"` must be unqiue across all application Modules._
 
-    To pass arguments to Interface Modules using the custom variable `"Name"` method it is required to use the `"Args"` parameter. When creating Interface Modules using the `getInterface()` method, it is possible to pass arguments using the standard `...$args` parameter for the function, and also using the setup `"Args"` parameter. 
+    To pass arguments to Modules using the custom variable `"Name"` method it is required to use the `"Args"` parameter. When creating Modules using the `getInterface()` method, it is possible to pass arguments using the standard `...$args` parameter for the function, and also using the setup `"Args"` parameter. 
 
     ***@note -*** _`...$args` parameter has higher priority over the `"Args"` parameters when used with `getInterface()` method_
 
-    In some instances, Interface Modules can have dependencies across other modules, and these dependencies can be defined within the `\B2U\Core\Module` - @see [\B2U\Core\Module](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MODULE.md#b2ucoremodule) for more details.  But it is also possible to declare dependencies between interfaces during the setup operation. This is accomplished with the `"Uses"` parameter. `"Uses"` supports a list of dependent Interface Modules. For each Interface Module, a unique custom variable name is selected, within the scope of the parent Module, which defines the Interface Module. This method will automatically load the dependencies when the dependent Interface Module is loaded and provides a local variable accessible to the Module using the `$this->variable_name` parameter.
+    In some instances, Modules can have dependencies across other modules, and these dependencies can be defined within the `\B2U\Core\Module` - @see [\B2U\Core\Module](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MODULE.md#b2ucoremodule) for more details.  But it is also possible to declare dependencies between interfaces during the setup operation. This is accomplished with the `"Uses"` parameter. `"Uses"` supports a list of dependent Modules. For each Module, a unique custom variable name is selected, within the scope of the parent Module, which defines the Module. This method will automatically load the dependencies when the dependent Module is loaded and provides a local variable accessible to the Module using the `$this->variable_name` parameter.
 
 ```php
 "interface_category" => [
