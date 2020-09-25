@@ -21,6 +21,11 @@ class module_name extends \B2U\Core\Module implements \B2U\Core\IInterface {
     // Module want to declare dependencies to other Interfaces and/or Modules
     public function __construct(...$args) {
     }
+    
+    // required function that can be empty if the module does not have other
+    // dependencies to other b2uFramework Interface Modules.
+    public function uses() {
+    }
 }
 ```
 ### Assigning Interface Modules via \B2u\Core\Manager
