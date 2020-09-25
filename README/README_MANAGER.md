@@ -134,7 +134,7 @@ Manager::instance()->run()
 Aliase for `parse()`, `route()`, and `response()` calls. `parse()` performs URL pasrsing and data extraction of the user's request into a `\B2U\Core\Request` object. `route()` does the heavy-lifting and routing of a request to the `Plugin / Action / Method` while passing all necessary parameters. `response()` is an aliase for the `B2U\Core\Response::send` function.
 ##
 ```PHP 
-Manager::instance()->callEndpoint($endpoint, $request, $data, $session = true)
+Manager::instance()->callEndpoint($endpoint, $request, $data, $cookies = true)
 ```
 @param **$endpoint** - `string` - The target `Plugin/[Action/[Method]]` to be called
 
@@ -142,7 +142,7 @@ Manager::instance()->callEndpoint($endpoint, $request, $data, $session = true)
 
 @param **$data** - `Array` - An Array of key/value pairs to be transmitted to the $endpoint using the defined $request
 
-@param **$session** - `bool` - Default `true`, Indicates if Session cookie data should be sent to the target $endpoint.
+@param **$cookies** - `bool` - Default `true`, Indicates if all cookie data should be sent to the target $endpoint.
 
 @return - \[`Mixed`, `int`] - Returns the cURL call results, and HTTP response code from making the request - throws` \Exception` on any errors.
 
