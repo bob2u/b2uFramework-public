@@ -35,7 +35,7 @@ A typical request to the b2uFramework will look like: `www.sitename.com/plugin/a
 
 @see [\B2U\Core\Action](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction) for more details about b2uFramework request URL
 
-* **Interface -** The primary use of an Interface is to maintain single instance access to some resources that live once through the execution of the entire script, which is one that will not require multiple instances. These are entry points into new/extended functionality that can be added to the framework and used/re-used by the application's Plugins and other Interfaces. Each Interface can provide access to any number of modules they support. Common pre-defined Interface categories are:
+* **Interface -** The primary use of an Interface is to maintain single instance access to some resources that live once through the execution of the entire script, which is one that will generally not require multiple instances. These are entry points into new/extended functionality that can be added to the framework and used/re-used by the application's Plugins and other Interfaces. Each Interface can provide access to any number of modules they support. Common pre-defined Interface categories are:
 
   * Server - containing modules for server technology
   * Authorization - common modules could be _HeaderAuthorization_, _LDAP_, _DatabaseDriven_, etc.
