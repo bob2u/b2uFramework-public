@@ -31,27 +31,25 @@ Manager::instance()->getParameters()
 @return - `Array` - Returns a list, by value, of the ***Request*** parameters. These would include all `$_GET`, `$_POST`, and `$_FILE` entries, as well as any data received > through `php://input` pipeline.
 ##
 ```PHP 
-Manager::instance()->getInterface($interface = "", $module = "", $new = false, ...$args)
+Manager::instance()->getInterface($interface = "", $module = "", $index = 0, ...$args)
 ```
 @param **$interface** - `string` - The Interface category to search for a given loaded Module within.
 
 @param **$module** - `string` - The `namespace\class` Module to access.
 
-@param **$new** - `bool` - Default `false`, optionally `true` can be provided to generate a new instance and store it as the single Interface instance within b2uFramework that will be returned on future calls to this function using the same $interface and $module combination.
+@param **$index** - `int` - Default `0`, the module definition to return - all modules must have at least 1 definition.
 
 @param **$args** - `mixed` - A packed variable to allow multiple parameters to be passed to the constructor of the Module.
 
 @return - `Object` - Returns an instance to the desired module or `false` on failure. Invalid parameters will result in a standard `\Exception`. Only providing the $interface will return an `Array` of all modules available in the given $interface category. If an empty $interface category is provided then the system will return an `Array` of all Interfaces and their Modules in the framework registry.
 
-This function is used to get an instance to a specific Interface's Module. If the Module is not loaded, this function will first attempt to load it and allocate an instance of the Module within the Interface category. Generally, there is only one (1) instance of a Module for the duration of a script's execution, but new instances can still be created, which will replace the old stored instance on future access. 
-
-***@note -*** _A reference to the old instance will need to be maintained by the application's developer if multiple instances of the same Module are required simultaneously._
+This function is used to get an instance to a specific Interface's Module. If the Module is not loaded, this function will first attempt to load it and allocate an instance of the Module within the Interface category. There is only one (1) instance of a Module for the duration of a script's execution, but new instances can still be createdby providing multiple definitions within the Module. 
 
 In most applications, Modules only need a single instance for the duration of the script's execution. But if multiple instances are required, then instead of using this function to create a single instance of a Module, it should be used to point to a factory for the Module, which fits a single instance design pattern. The factory will then be accessible to all scripts to create as many Module instances as needed.
 
 An example of using an Interface would be for user authorization, and a Module in it would be LDAP. The example below assumes the application has loaded a Module for LDAP processing.
 ```php
-$ldap_auth = \B2U\Core\Manager::instance()->getInterface("Authorization", "My_LDAP", false, $ldap_config_params, "login_credentials");
+$ldap_auth = \B2U\Core\Manager::instance()->getInterface("Authorization", "My_LDAP", 0, $ldap_config_params, "login_credentials");
 if ($ldap_auth->isUserAuthorized()) {
   ...
 }
@@ -79,7 +77,7 @@ The $config is an array used to provide data to set up the framework and the app
 ```
 ***@note -*** _If the Plugin's Actions are in a `namespace`, then the files containing the Action's definition should include `return __NAMESPACE__;` as the last line of code within the file so that the framework would be able to determine the correct class objects that need to be instantiated on any given Action call._
 
-3) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology). Modules are added under each Interface's main category, following the format below. Each Module will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded, or the path to a specific file that contains the `module_name class` or an `_autoload` function.
+3) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology). Modules are added under each Interface's main category, following the format below. Each Module must have at least (1) definition, which will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded, or the path to a specific file that contains the `module_name class` or an `_autoload` function.
 
     Interface's Modules can be accessed by the application using the `getInterface()` method defined previously, and they can also be accessed using a custom variable name that can be accessed using `\B2U\Core\Manager::instance()->user_defined_variable_name` syntax. To use the variable syntax the `"Name"` parameter should be set during setup. This mechanism will load the Module on first access to the custom variable, which is similar to calling `getInterface()` and storing the result in a global variable.
 
@@ -94,16 +92,20 @@ The $config is an array used to provide data to set up the framework and the app
 ```php
 "interface_category" => [
    "namespace\model_name class" => [
-      "Name" =>   // string
-      "Path" =>   // string
-      "Args" =>   // Array
-      "Uses" => [
-          "variable_name" => [
-              "interface_category",
-              "module_name",
-              ..."arguments"
+      [
+          "Name" =>   // string
+          "Path" =>   // string
+          "Args" =>   // Array
+          "Uses" => [
+              "variable_name" => [
+                  "interface_category",
+                  "module_name",
+                  "index or Name",
+                  ..."arguments"
+              ]
           ]
-      ]
+      ],
+      [...]
    ]
 ]
 ```
