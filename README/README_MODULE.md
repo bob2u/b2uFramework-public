@@ -34,15 +34,19 @@ Dependencies can be defined using the `uses()` method in the constuctor of a Mod
         "Interfaces" => [
             "Utility" => [
                 "A" => [
-                    "Uses" => [
-                        "varB" => ["Database", "B"]     // notice varB usage in class A
-                    ],
-                    "Path" => "path_to_module_a",
+                    [
+                        "Uses" => [
+                            "varB" => ["Database", "B", "def0"]     // notice varB usage in class A
+                        ],
+                        "Path" => "path_to_module_a",
+                    ]
                 ]
             ],
             "Database" => [
                 "B" => [
-                    "Path" => "path_to_module_b",
+                    "def0" => [
+                        "Path" => "path_to_module_b",
+                    ]
                 ]
             ]
         ]
