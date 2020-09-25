@@ -37,7 +37,7 @@ Manager::instance()->getInterface($interface = "", $module = "", $index = 0, ...
 
 @param **$module** - `string` - The `namespace\class` Module to access.
 
-@param **$index** - `int` - Default `0`, the module definition to return - all modules must have at least 1 definition.
+@param **$index** - `mixed` - Default `0`, the module definition to return - all modules must have at least 1 definition. Can either provide the index of the definition within the Module, or the `"Name"` attribute if it is set.
 
 @param **$args** - `mixed` - A packed variable to allow multiple parameters to be passed to the constructor of the Module.
 
