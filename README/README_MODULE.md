@@ -24,7 +24,7 @@ class module_name extends \B2U\Core\Module implements \B2U\Core\IInterface {
     
     // required function that can be empty if the module does not have other
     // dependencies to other b2uFramework Interface Modules.
-    public function uses() {
+    public function dependencies() {
     }
 }
 ```
@@ -83,7 +83,7 @@ class A extends \B2U\Core\Module implements \B2U\Core\IInterface {
 
 @param **$module** - `string` - Name of a defined Module within the Interface category.
 
-This function ***MUST*** be called from within the `uses()` function of another Module. This function aims to enusre that the proper `Uses` defintions have been set in the `\B2U\Core\Manager::setup(...)` function.Using this method to declare dependencies will ensure all required Interfaces are available to a given b2uFramework-based application.
+This function ***MUST*** be called from within the `dependencies()` function of another Module. This function aims to enusre that the proper `Uses` defintions have been set in the `\B2U\Core\Manager::setup(...)` function.Using this method to declare dependencies will ensure all required Interfaces are available to a given b2uFramework-based application.
 
 Once the `uses()` has resolved, a Module can access the dependent Module by using the `$this->getInterface(...)` method, and providing the `"{interface_name}_{module_name}"` as the key index into the array, or a variable name - if defined .
 ##
