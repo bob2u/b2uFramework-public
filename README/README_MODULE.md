@@ -68,17 +68,15 @@ class A extends \B2U\Core\Module implements \B2U\Core\IInterface {
 # Methods
 ```PHP
 \B2U\Core\Module
-    uses($interface, $module, ...$args)
+    uses($interface, $module)
 ```
 @param **$interface** - `string` - Name of supported Interface category.
 
 @param **$module** - `string` - Name of a defined Module within the Interface category.
 
-@param **$args** - `Array` - A packed list of variable arguments to be supplied to the Module's constructor. This PHP feature allows a function to take a variable number of arguments, depending on its signature.
+This function ***MUST*** be called from within the `__construct(...$args)` of another Module. This function aims to enusre that the proper `Uses` defintions have been set in the `\B2U\Core\Manager::setup(...)` function.Using this method to declare dependencies will ensure all required Interfaces are available to a given b2uFramework-based application.
 
-This function ***MUST*** be called from within the `__construct(...$args)` of another Module. This function aims to force a Module to load another Interface's Module, or within the same Interface, and provide a means to access the instance without going through `\B2U\Core\Manager`. Furthermore, using this method to declare dependencies will ensure all required Interfaces are available to a given b2uFramework-based application.
-
-Once the `uses()` has resolved, a Module can access the dependent Module by using the `$this->getInterface(...)` method, and providing the `"{interface_name}_{module_name}"` as the key index into the array.
+Once the `uses()` has resolved, a Module can access the dependent Module by using the `$this->getInterface(...)` method, and providing the `"{interface_name}_{module_name}"` as the key index into the array, or a variable name - if defined .
 ##
 ```PHP
 \B2U\Core\Module
