@@ -92,5 +92,17 @@ Once the `uses()` has resolved, a Module can access the dependent Module by usin
     getInterface($name)
 ```
 @return - `object` - Function will return the instance, or `NULL`, of the module loaded using `uses(...)` or `setup(...)` configuration following `"{interface_name}_{module_name}"` format for key $name.
+##
+```PHP
+\B2U\Core\Module
+    setParam(&$args, $index, $error)
+```
+@param **$args** - `Array` - Array of arguments provided during construction.
+
+@param **$index** - `int` - index of element within arguments Array to validate.
+
+@param **$error** - `string` - Exception message to be thrown if index is not set.
+
+@return - `mixed` - Function will return the value provided in the arguments array at given index.
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MODULE.md#b2ucoremodule)
