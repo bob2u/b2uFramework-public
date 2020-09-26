@@ -101,5 +101,14 @@ This function should get called generally once a significant event that elevates
 Session::instance()->destroy()
 ```
 Destroys the current session active session and cookie values.
+##
+```PHP 
+Session::instance()->swap($id)
+```
+@param **$id** - `string` - Default `""`. The session's id to assume.
+
+To utilize this function the first call should be done with an active session's id that is different than current session's id. Once the application has finished using the new session it should make another call to this function, without passing any arguments, in order to swap back to the original session.
+
+***WARNING*** _This function allows swapping between sessions given a different session id._
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_SESSION.md#b2ucoresession)
