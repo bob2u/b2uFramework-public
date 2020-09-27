@@ -26,6 +26,11 @@ The `\B2U\Core\Session` is treated as a singleton, and there is only one instanc
 
 # Members
 ```PHP
+__id
+```
+Alias for `session_id()` to Get and Set the current session's id.
+##
+```PHP
 csrftoken
 ```
 Calling `$this->Session->csrftoken` within an Action, or `Session::instance()->csrftoken` from any script, will:
