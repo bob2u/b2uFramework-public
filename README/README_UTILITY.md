@@ -36,6 +36,10 @@
 ```
 ##
 ```PHP
+\B2U\Core\Utility::delay($seconds, $callback)
+```
+##
+```PHP
 \B2U\Core\Utility::sanitize(array &$data, $filter = false)
 ```
 ##
