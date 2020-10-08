@@ -117,7 +117,7 @@
 // image, office, text, video, audio, and pdf and if a
 // key is present in the list it will indicate that it
 // is an invalid file type. empty $flag allows all.
-\B2U\Core\Utility::validateFileUpload($file, $flag)
+\B2U\Core\Utility::validateFileUpload($file, $flag, $tmp_name = "tmp_name")
 ```
 ##
 ```PHP
