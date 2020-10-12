@@ -83,7 +83,9 @@ The $config is an array used to provide data to set up the framework and the app
 
     ***@note -*** _`"Name"` must be unqiue across all application Modules._
 
-    To pass arguments to Modules using the custom variable `"Name"` method it is required to use the `"Args"` parameter. When creating Modules using the `getInterface()` method, it is possible to pass arguments using the standard `...$args` parameter for the function, and also using the setup `"Args"` parameter. 
+    To pass arguments to Modules using the custom variable `"Name"` method it is required to use the `"Args"` parameter. When creating Modules using the `getInterface()` method, it is possible to pass arguments using the standard `...$args` parameter for the function, and also using the setup `"Args"` parameter.
+    
+    In some cases the application may want to make some changes to the arguments passed in (e.g. decrypt the argument). In these instances an argument can be represented with a `function(&$arg, $uses)` anonymous function. The function's signature receives the `$arg` argument by referrence, and any `$uses` interfaces defined using the `"Uses"` parameter of the Module. These `"Uses"` parameters can be accessed within the anonymous function with `$uses->variable_name` syntax. Any changes to the `$arg` parameters will be the final change that will be passed to the Module's `__construct(...$args)`.
 
     ***@note -*** _`...$args` parameter has higher priority over the `"Args"` parameters when used with `getInterface()` method_
 
@@ -95,7 +97,7 @@ The $config is an array used to provide data to set up the framework and the app
       [
           "Name" =>   // string
           "Path" =>   // string
-          "Args" =>   // Array
+          "Args" =>   // Array or Function
           "Uses" => [
               "variable_name" => [
                   "interface_category",
