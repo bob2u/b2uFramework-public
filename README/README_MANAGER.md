@@ -63,9 +63,32 @@ Manager::instance()->setup($config)
 
 The $config is an array used to provide data to set up the framework and the application, and it consists of the following sections:
 
-1) **Includes** - An `Array of strings` to add global include files that should be loaded on each request and any definitions that need to be made available to all Plugins and Interfaces.
+1) **Errors** - An `Array of strings` to add global include files that should be loaded on each request and any definitions that need to be made available to all Plugins and Interfaces.
 
-2) **Plugins** - The actual site content will be in this section. It will primarily contain the root `"/"` Module (home page), and all other pages/modules. Each Plugin definition will have a required `"Path"` parameter set to a directory that contains the Plugin Action(s), and an optional `"Include"` parameter that can be set to an `Array of strings` for files to include that is used only within this Plugin. 
+2) **Includes** - An `Array` to indicate how the system should react to system-level errors and exceptions. All exceptions will trigger an error event, and all error events will result in a `HTTP/1.1 500 There was internal system error!` response. If the application wants to override the standard system error response they can use this configuration parameter to capture all errors.
+
+```php
+"Errors" => [
+   "Report" =>   // Default 0 - set to 0 or false, or remove the entry to disable error reporting, else E_ALL, etc.
+   "Callback" => function($error, $errno, $errstr, $errfile, $errline) {
+      // $error will contain an array with last error information.
+      //
+      // example below provides the stack and error details in raw
+      // format. The application should decide how to handle error
+      // results.
+      if (!empty($error)) {
+				var_dump($error);
+			}
+			$stack = debug_backtrace();
+			if (count($stack) > 1) {
+				var_dump($stack);
+			}      
+   }
+]
+```
+***@note -*** _By default the framework will set `log_error` at runtime to `On` for php.ini_
+
+3) **Plugins** - The actual site content will be in this section. It will primarily contain the root `"/"` Module (home page), and all other pages/modules. Each Plugin definition will have a required `"Path"` parameter set to a directory that contains the Plugin Action(s), and an optional `"Include"` parameter that can be set to an `Array of strings` for files to include that is used only within this Plugin. 
 
 ***@note -*** _Use the 1. **Includes** section for files that need to be used in more than one Plugin._
 
@@ -77,7 +100,7 @@ The $config is an array used to provide data to set up the framework and the app
 ```
 ***@note -*** _If the Plugin's Actions are in a `namespace`, then the files containing the Action's definition should include `return __NAMESPACE__;` as the last line of code within the file so that the framework would be able to determine the correct class objects that need to be instantiated on any given Action call._
 
-3) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology). Modules are added under each Interface's main category, following the format below. Each Module must have at least (1) definition, which will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded, or the path to a specific file that contains the `module_name class` or an `_autoload` function.
+4) **Interfaces** - Third-party modules and reuseable APIs should be added to this section. @see [Terminology:Interfaces](https://github.com/bob2u/b2uFramework-public/blob/master/README.md#terminology). Modules are added under each Interface's main category, following the format below. Each Module must have at least (1) definition, which will have a required `"Path"` parameter that can either be the top-level directory to the Module, which will contain all .php files for its function that will be autoloaded, or the path to a specific file that contains the `module_name class` or an `_autoload` function.
 
     Interface's Modules can be accessed by the application using the `getInterface()` method defined previously, and they can also be accessed using a custom variable name that can be accessed using `\B2U\Core\Manager::instance()->user_defined_variable_name` syntax. To use the variable syntax the `"Name"` parameter should be set during setup. This mechanism will load the Module on first access to the custom variable, which is similar to calling `getInterface()` and storing the result in a global variable.
 
@@ -112,7 +135,7 @@ The $config is an array used to provide data to set up the framework and the app
 ]
 ```
 
-4) **Session** - (Optional) The session can be configured at startup to control its life span and how/when to delete obsolete sessions. Values for all timing parameters are in seconds.
+5) **Session** - (Optional) The session can be configured at startup to control its life span and how/when to delete obsolete sessions. Values for all timing parameters are in seconds.
 
 ```php
 [
