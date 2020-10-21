@@ -13,6 +13,33 @@ $this->Response->setHeader("Content-Type", "text/html")
 
 # Methods
 ```PHP 
+setHCode($key)
+```
+@param **$code** - `enum` - HTTP response code. One of:
+```PHP
+const ERROR             = 500;
+const GET_OK            = 200;
+const GET_NOT_FOUND     = 404;
+const POST_OK           = 200;  // executed, nothing to return
+const POST_OK_CREATE    = 201;	// record created
+const POST_OK_EMPTY     = 204;	// empty body retrned
+const POST_BAD_REQ      = 400;	// bad data provided
+const PUT_OK_UPDATE     = 200;	// record updated
+const PUT_OK_CREATE     = 201;	// record created
+const PUT_OK_EMPTY      = 204;	// empty body returned
+const PUT_CONFLICT      = 409;
+const PATCH_OK          = 200;	// record partial updated
+const PATCH_BAD_FROM    = 415;	// Unsupported Media Type
+const PATCH_BAD_REQ     = 400;	
+const PATCH_CONFLICT    = 409;
+const DELETE_OK         = 204;
+const DELETE_NOT_FOUND  = 404;
+const ASYNC_ACCEPTED    = 202;	// send to client o indicate async process started
+const ASYNC_COMPLETED   = 303;	// async operation completed
+```
+***@note -*** _If this function is not called then the default 200 will be provided, or 500 on system error_
+##
+```PHP 
 setHeader($key, $value)
 ```
 @param **$key** - `string` - HTTP header flags.
