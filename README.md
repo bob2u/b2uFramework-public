@@ -75,13 +75,8 @@ class index extends \B2U\Core\Action implements \B2U\Core\IAction {
   }
 }
 
-try {
-  \B2U\Core\Manager::instance()->setup([]);
-  \B2U\Core\Manager::instance()->run();
-}
-catch(\Exception $e) {
-  echo $e->getMessage();
-}
+\B2U\Core\Manager::instance()->setup([]);
+\B2U\Core\Manager::instance()->run();
 ?>
 ```
 
