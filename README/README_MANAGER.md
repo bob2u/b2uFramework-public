@@ -157,6 +157,8 @@ In some instances, an application will want to augment the existing Module defin
 Manager::instance()->run()
 ```
 Aliase for `parse()`, `route()`, and `response()` calls. `parse()` performs URL pasrsing and data extraction of the user's request into a `\B2U\Core\Request` object. `route()` does the heavy-lifting and routing of a request to the `Plugin / Action / Method` while passing all necessary parameters. `response()` is an aliase for the `B2U\Core\Response::send` function.
+
+***@note*** _This is the preferred method for calling the framework as it will internally catch exceptions and process them as errors. If the application decides to use the individual `parse()`, `route()`, and `response()` calls then they should also enclose the execution inside a `try/catch` block and `trigger_error()` on any exceptions._
 ##
 ```PHP 
 Manager::instance()->callEndpoint($endpoint, $request, $data, $cookies = true)
