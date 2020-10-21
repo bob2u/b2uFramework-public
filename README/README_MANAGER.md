@@ -77,12 +77,12 @@ The $config is an array used to provide data to set up the framework and the app
       // format. The application should decide how to handle error
       // results.
       if (!empty($error)) {
-				var_dump($error);
-			}
-			$stack = debug_backtrace();
-			if (count($stack) > 1) {
-				var_dump($stack);
-			}      
+         var_dump($error);
+      }
+      $stack = debug_backtrace();
+      if (count($stack) > 1) {
+         var_dump($stack);
+      }      
    }
 ]
 ```
