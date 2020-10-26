@@ -73,7 +73,7 @@ $page = new \B2U\Core\HTMLTemplate("slash_terminated_template_file_directory", "
     ],
 ]);
 
-``
+```
 ##
 ```PHP
 \B2U\Core\HTMLTemplate::addKey($key, $value)
