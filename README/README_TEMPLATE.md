@@ -61,7 +61,7 @@ $page->PanelA->PanelB->setVisible(false);
 @return - `\B2U\Core\HTMLTemplate` - On a successful load of the template file, an instance to a `\B2U\Core\HTMLTemplate` object is returned.
 
 ```PHP
-\\ eample using the inline initialization using our template html from above
+\\ example using the inline initialization using our template html from above
 $page = new \B2U\Core\HTMLTemplate("slash_terminated_template_file_directory", "template_name.html", [
     "Var1" => "Welcome",
     "PanelA" => [
