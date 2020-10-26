@@ -50,13 +50,30 @@ $page->PanelA->PanelB->setVisible(false);
 # Methods
 ```PHP
 \B2U\Core\HTMLTemplate
-    __construct($dir, $file)
+    __construct($dir, $file, $data = [])
 ```
 @param **$dir** - `string` - Path to the HTML template file to load.
 
 @param **$file** - `string` - File name to load.
 
+@param **$data** - `Array` - (optional) Used to initialize the variables and panels at construction.
+
 @return - `\B2U\Core\HTMLTemplate` - On a successful load of the template file, an instance to a `\B2U\Core\HTMLTemplate` object is returned.
+
+```PHP
+\\ eample using the inline initialization using our template html from above
+$page = new \B2U\Core\HTMLTemplate("slash_terminated_template_file_directory", "template_name.html", [
+    "Var1" => "Welcome",
+    "PanelA" => [
+        "Var2" => "to",
+        "PanelB" => [
+            "visible" => false,
+            "Var3" => "b2uFramework!"
+        ]
+    ],
+]);
+
+``
 ##
 ```PHP
 \B2U\Core\HTMLTemplate::addKey($key, $value)
