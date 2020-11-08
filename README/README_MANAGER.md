@@ -135,18 +135,9 @@ The $config is an array used to provide data to set up the framework and the app
 ]
 ```
 
-5) **Session** - (Optional) The session can be configured at startup to control its life span and how/when to delete obsolete sessions. Values for all timing parameters are in seconds.
+5) **Profile** - setting this parameter to true would provide a high-level output of the framework's timing in processing a request. The result will be saved to a file in the root directory named `__b2u_timingX`.
 
-```php
-[
-   "Life" =>    // int - Default 1800
-   "Kill" =>    // int - Default 300
-]
-```
-
-6) **Profile** - (Optional) setting this parameter to true would provide a high-level output of the framework's timing in processing a request. The result will be saved to a file in the root directory named `__b2u_timingX`.
-
-7) **Logging** - (Optional) An `Array` to indicate activate system logging that allows a custom callback to be called with information related to the execution of the framework. Application can write custom log entries using the `Manager::log(...)` static method.
+6) **Logging** - An `Array` to indicate activate system logging that allows a custom callback to be called with information related to the execution of the framework. Application can write custom log entries using the `Manager::log(...)` static method.
 
 ```php
 "Logging" => [
@@ -155,6 +146,15 @@ The $config is an array used to provide data to set up the framework and the app
       // $args will contain an array with information regarding the log entry
       // this data will vary depending on where and how it is being logged-in
    }
+]
+```
+
+7) **Session** - (Optional) The session can be configured at startup to control its life span and how/when to delete obsolete sessions. Values for all timing parameters are in seconds.
+
+```php
+[
+   "Life" =>    // int - Default 1800
+   "Kill" =>    // int - Default 300
 ]
 ```
 ##
