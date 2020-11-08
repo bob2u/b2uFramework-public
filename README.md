@@ -70,7 +70,7 @@ include("b2u.min.php");
 class index extends \B2U\Core\Action implements \B2U\Core\IAction {	
   function __construct($method, & $params, & $response) {
     parent::__construct($method, $params, $response);
-    $this->Response->setHeader("Content-Type", "text/html")
+    $this->Response()->setHeader("Content-Type", "text/html")
                     ->setContent("<h1>Welcome to B2uFramework</h1>");
   }
 }
