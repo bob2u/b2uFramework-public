@@ -143,6 +143,20 @@ The $config is an array used to provide data to set up the framework and the app
    "Kill" =>    // int - Default 300
 ]
 ```
+
+6) **Profile** - (Optional) setting this parameter to true would provide a high-level output of the framework's timing in processing a request. The result will be saved to a file in the root directory named `__b2u_timingX`.
+
+7) **Logging** - (Optional) An `Array` to indicate activate system logging that allows a custom callback to be called with information related to the execution of the framework. Application can write custom log entries using the `Manager::log(...)` static method.
+
+```php
+"Logging" => [
+   "Enable" =>   // Default 0 - set to 1 or true to allow callback to receive log data.
+   "Callback" => function($args) {
+      // $args will contain an array with information regarding the log entry
+      // this data will vary depending on where and how it is being logged-in
+   }
+]
+```
 ##
 ```PHP 
 Manager::instance()->augment($config, $mode)
