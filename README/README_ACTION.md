@@ -67,7 +67,7 @@ It is important to note that it is possible to call a Plugin in a request URL wi
 
 ***@note -*** _Calling `www.sitename.com/plugin` with no Action will execute the ***index.php***'s `class index`'s `__construct(...)`, and if either does not exists the site will throw an exception._
 
-***@note -*** _A `\B2U\Core\Response` must be sent back to the requester for all requests sent to the b2uFranework. The `\B2U\Core\Response` object is accessible to all Action's Methods, including the `__consturct(...)`, via the `$this->Response` parameter. An `\Exception` is thrown if a response with a valid content is not sent back to the requester. @see [\B2U\Core\Response](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_RESPONSE.md#b2ucoreresponse) for more details._
+***@note -*** _A `\B2U\Core\Response` must be sent back to the requester for all requests sent to the b2uFranework. The `\B2U\Core\Response` object is accessible to all Action's Methods, including the `__consturct(...)`, via the `$this->Response()` parameter. An `\Exception` is thrown if a response with a valid content is not sent back to the requester. @see [\B2U\Core\Response](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_RESPONSE.md#b2ucoreresponse) for more details._
 
 ## Processing Request Parameters
 
@@ -85,11 +85,11 @@ www.sitename.com/plugin/action/?var1_name=var1=&var2_name=var2&var3_name=var3...
 www.sitename.com/plugin/action/method?var1_name=var1=&var2_name=var2&var3_name=var3...
 ```
 
-To access these parameters, all Action Method's can reference the `$this->Parameters` member, which is an associative `Array` of all `$_GET` parameters accessible via their 0 based numeric index - if passed via the URL path, or their names - if given as an argument in a query string, as a key index into the array.
+To access these parameters, all Action Method's can reference the `$this->Parameters()` member, which is an associative `Array` of all `$_GET` parameters accessible via their 0 based numeric index - if passed via the URL path, or their names - if given as an argument in a query string, as a key index into the array.
 
-***@note -*** _Parameters passed via `$_POST` are also accessible using the same `$this->Parameters` array. The only detail is that `$_POST` parameters have higher priority over `$_GET` when reserving a key in the `$this->Parameters` array._
+***@note -*** _Parameters passed via `$_POST` are also accessible using the same `$this->Parameters()` array. The only detail is that `$_POST` parameters have higher priority over `$_GET` when reserving a key in the `$this->Parameters()` array._
 
-***@note -*** _Parameters passed via `$_FILE` are also accessible using the same `$this->Parameters` array. The only detail is that all file(s)'s details will be accessible under a special `"_FILES"` key, and with this key having the highest priority over all key-values in the `Parameters` array._
+***@note -*** _Parameters passed via `$_FILE` are also accessible using the same `$this->Parameters()` array. The only detail is that all file(s)'s details will be accessible under a special `"_FILES"` key, and with this key having the highest priority over all key-values in the `Parameters` array._
 
 ## Declaring New Methods
 Not all Action will use their default `__construct(...)` Method, or rely solely on it. To this effect, developers can define their Methods that will be automatically exposed through the request URL format.
@@ -97,7 +97,7 @@ Not all Action will use their default `__construct(...)` Method, or rely solely 
 A simple Method is one that does not require any arguments to be passed in.
 ```PHP
 public function isvalid() {
-    $this->Response->setHeader("Content-Type", "text/html")->setContent("Yes");
+    $this->Response()->setHeader("Content-Type", "text/html")->setContent("Yes");
 }
 ```
 In the above example, calling `www.sitename.com/plugin_name/action_name/isvalid` will print `Yes` to the page.
@@ -105,7 +105,7 @@ In the above example, calling `www.sitename.com/plugin_name/action_name/isvalid`
 A complex Method is one that does accept arguments to be passed in via either `$_GET` or `$_POST`.
 ```PHP
 public function isvalid($status) {
-    $this->Response->setHeader("Content-Type", "text/html")->setContent($status == "Y" ? "Yes" : "No");
+    $this->Response()->setHeader("Content-Type", "text/html")->setContent($status == "Y" ? "Yes" : "No");
 }
 ```
 Now calling the above example using the same request URL will result in an `\Exception` stating `Missing required endpoint parameter (status)!`.
@@ -123,6 +123,49 @@ must be called. The same rule applies to `$_POST` requests. Furthermore, notice 
 ***@note -*** _Passing the first argument in both the URL path and query string, or `$_POST` parameters, will give higher priority to the value provided via the query string or `$_POST` parameter, over the path URL._
 
 ***@note -*** _In some instances, a Method may want to provide optional parameters as part of its function signature. This can be achieved by assigning a default value to the argument in the function signature (e.g., In the above example `public function isvalid($status = "Y")` will allow calls to the Method with or without the **status** parameter)._
+
+## Isolating Action Methods to Request Methods
+In many circumstances an application would want to limit how an Action's Method(s) can be accessed based on the request method (`GET`, `POST`, `PUT`, `PATCH`, and `DELETE`). This can be accomplished using the `callOn()` method in the `__construct(...)` of the Action. Below an example is provdied that will only allow `foo()` to be called when `POST` and `PUT` methods are received.
+```PHP
+<?php
+class action_name extends \B2U\Core\Action implements \B2U\Core\IAction {
+
+    function __construct($method, & $params, & $response) {
+        parent::__construct($method, $params, $response);
+        
+        // this call indicates that the Method foo will only support POST and PUT
+        $this->callOn(["POST", "PUT"], [$this, 'foo']);
+        
+        // added incase application makes a call to the /acion_name/ via GET
+        $this->Response()->setHeader("Content-Type", "text/html")
+                          ->setContent("GET called on action_name");
+    }
+    
+    function foo() {
+    }
+}
+```
+***@note -*** _It is also possible to include the initial `GET` to the Action as a `callOn()` method defintion. In this case the `callOn()` will be defined within the `__construct(...)` of the Action with an **Anonymous** function definition. There can only be one anonymous function assigned to an Action per request method._
+```PHP
+class action_name extends \B2U\Core\Action implements \B2U\Core\IAction {
+
+    function __construct($method, & $params, & $response) {
+        parent::__construct($method, $params, $response);
+        
+        // this call indicates that the Method foo will only support POST and PUT
+        $this->callOn(["GET"], function() {
+              
+              // executed on call to the /acion_name/ via GET
+              $this->Response()->setHeader("Content-Type", "text/html")
+                                ->setContent("GET called on action_name");
+        });
+        
+    }
+    
+    function foo() {
+    }
+}
+```
 
 # Methods
 ```PHP
