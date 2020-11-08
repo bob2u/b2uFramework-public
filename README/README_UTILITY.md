@@ -64,7 +64,7 @@
 ```
 ##
 ```PHP
-\B2U\Core\Utility::getFiles($dir, $ext = null)
+\B2U\Core\Utility::getFiles($dir, $ext = null, $pth = false)
 ```
 ##
 ```PHP
