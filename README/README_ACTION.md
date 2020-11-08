@@ -33,7 +33,7 @@ An Action is a PHP file within a Plugin directory. To create an Action:
    * Use of all lowercase letters and "_" are recommended.
 2) Declare a PHP `class` using the same name as the Action file.
 3) Derive the class from the required `\B2U\Core\Action` class and `\B2U\Core\IAction` interface.
-4) Define the required `__construct(& $params, & $response)` method.
+4) Define the required `__construct($method, & $params, & $response)` method.
 5) Initialize the parent.
 
 ***@note -*** _If the Action is in a `namespace`, then the file containing the Action's definition should include `return __NAMESPACE__;` as the last line of code within the file so that the framework would be able to determine the correct class objects that need to be instantiated on any given Action call._
@@ -45,10 +45,10 @@ Once all steps have been completed, the following should be the final output pre
 class action_name extends \B2U\Core\Action implements \B2U\Core\IAction {
 
     // The default Method for all Actions is the constructor
-    function __construct(& $params, & $response) {
+    function __construct($method, & $params, & $response) {
     
         // This is a required call in the constructor of all Actions
-        parent::__construct($params, $response);
+        parent::__construct($method, $params, $response);
     }
     
     // Define other Methods here ...
