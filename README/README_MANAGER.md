@@ -63,9 +63,9 @@ Manager::instance()->setup($config)
 
 The $config is an array used to provide data to set up the framework and the application, and it consists of the following sections:
 
-1) **Errors** - An `Array of strings` to add global include files that should be loaded on each request and any definitions that need to be made available to all Plugins and Interfaces.
+1) **Includes** - An `Array of strings` to add global include files that should be loaded on each request and any definitions that need to be made available to all Plugins and Interfaces. Each entry can be a single file or a directory with sub-directories and files to be loaded (recursive).
 
-2) **Includes** - An `Array` to indicate how the system should react to system-level errors and exceptions. All exceptions will trigger an error event, and all error events will result in a `HTTP/1.1 500 There was internal system error!` response. If the application wants to override the standard system error response they can use this configuration parameter to capture all errors.
+2) **Errors** - An `Array` to indicate how the system should react to system-level errors and exceptions. All exceptions will trigger an error event, and all error events will result in a `HTTP/1.1 500 There was internal system error!` response. If the application wants to override the standard system error response they can use this configuration parameter to capture all errors.
 
 ```php
 "Errors" => [
