@@ -45,6 +45,10 @@ Once all steps have been completed, the following should be the final output pre
 class action_name extends \B2U\Core\Action implements \B2U\Core\IAction {
 
     // The default Method for all Actions is the constructor
+    // the $method parameter is actually the POST, GET, PUT,
+    // etc. request method and not to be confused with those
+    // methods defined in the class that can be called from
+    // the URL /method/ section.
     function __construct($method, & $params, & $response) {
     
         // This is a required call in the constructor of all Actions
