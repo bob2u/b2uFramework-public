@@ -15,14 +15,14 @@ To utilize the CSRF Token feature on _forms_ and _AJAX_ calls, a developer needs
 
 Applications can embed the token in their forms or submit them via the request headers for AJAX calls. The framework provides methods for validating a token submitted.
 
-To submit CSRF tokens with AJAX header request, use the following code:
+To submit CSRF tokens with AJAX header request, use the following code (e.g. jQuery), or a similar call to ensure the header is provided on all AJAX calls:
 ```javascript
 $( document ).ajaxSend( function( event, jqXHR ) {
    jqXHR.setRequestHeader("X-CSRF-TOKEN", "{var:csrftoken}");
 });
 ```
 
-The `\B2U\Core\Session` is treated as a singleton, and there is only one instance of it for the duration of the script's execution. This instance is made available to all Plugins by default via `$this->Session` parameter, and can also be requested via `\B2U\Core\Manager::instance()->getSession()` or a direct call to `Session::instance()`. 
+The `\B2U\Core\Session` is treated as a singleton, and there is only one instance of it for the duration of the script's execution. This instance is made available to all Plugins by default via `$this->Session()` parameter, and can also be requested via `\B2U\Core\Manager::instance()->getSession()` or a direct call to `Session::instance()`. 
 
 # Members
 ```PHP
@@ -33,7 +33,7 @@ Alias for `session_id()` to Get and Set the current session's id.
 ```PHP
 csrftoken
 ```
-Calling `$this->Session->csrftoken` within an Action, or `Session::instance()->csrftoken` from any script, will:
+Calling `$this->Session()->csrftoken` within an Action, or `Session::instance()->csrftoken` from any script, will:
 
 1. Issue new CSRF token that can be used in the following form or AJAX call.
 2. Set the `"csrftoken"` cookie parameter to be sent back to the browser.
