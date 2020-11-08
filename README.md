@@ -68,8 +68,8 @@ The ***index.php*** provided with the framework is required and contains a basic
 include("b2u.min.php");
 
 class index extends \B2U\Core\Action implements \B2U\Core\IAction {	
-  function __construct(& $params, & $response) {
-    parent::__construct($params, $response);
+  function __construct($method, & $params, & $response) {
+    parent::__construct($method, $params, $response);
     $this->Response->setHeader("Content-Type", "text/html")
                     ->setContent("<h1>Welcome to B2uFramework</h1>");
   }
