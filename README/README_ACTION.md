@@ -142,6 +142,7 @@ class action_name extends \B2U\Core\Action implements \B2U\Core\IAction {
     }
     
     function foo() {
+        // called only on POST and PUT
     }
 }
 ```
@@ -158,11 +159,7 @@ class action_name extends \B2U\Core\Action implements \B2U\Core\IAction {
               // executed on call to the /acion_name/ via GET
               $this->Response()->setHeader("Content-Type", "text/html")
                                 ->setContent("GET called on action_name");
-        });
-        
-    }
-    
-    function foo() {
+        });        
     }
 }
 ```
