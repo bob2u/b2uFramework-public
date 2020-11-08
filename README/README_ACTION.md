@@ -172,5 +172,13 @@ class action_name extends \B2U\Core\Action implements \B2U\Core\IAction {
 @return - `Array` - Returns the instance of the `$this->Parameters` array.
 
 The b2uframework calls this function before calling an Action's Method to provide plugin developers the ability to modify the data in the `$this->Parameters` array. This is useful in cases where a plugin will generate data in arbitrary fields, and the developer would want these to be accessible through the `Parameters` array as a first-level key-value entry. An example is available in the B2uPanelAction as part of the b2upanel jQuery plugin.
+##
+```PHP
+\B2U\Core\Action
+    callOn($methods, $callback)
+```
+@param **$methods** - `Array` - An array of one or more supported request methods (`GET`, `POST`, `PUT`, `PATCH`, and `DELETE`)
+
+@param **$callback** - `Array or Function` - Can be an anonymous function or an `Array` with the following signature `[$this, 'method_name']` where `'method_name'` is a `string` representing the Method within the Action.
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
