@@ -4,10 +4,10 @@
 
 A response is the combination of a set of headers and content sent back to a requester based on the request received.  This object helps encapsulate the response components and provides a built-in functionality to process varying response contents. Furthermore, the `\B2U\Core\Response` allows chaining of function calls to enable the construction of complex headers - as needed.
 
-The `\B2U\Core\Response` is treated as a singleton within the framework, and a single instance is made available through the Action parameter `$this->Response`, which is to build custom responses per Actions.
+The `\B2U\Core\Response` is treated as a singleton within the framework, and a single instance is made available through the Action parameter `$this->Response()`, which is to build custom responses per Actions.
 
 ```PHP
-$this->Response->setHeader("Content-Type", "text/html")
+$this->Response()->setHeader("Content-Type", "text/html")
                ->setContent("<h1>Welcome to B2uFramework</h1>");
 ```
 
