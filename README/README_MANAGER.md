@@ -145,7 +145,8 @@ The $config is an array used to provide data to set up the framework and the app
    "Callback" => function($args) {
       // $args will contain an array with information regarding the log entry
       // this data will vary depending on where and how it is being logged-in
-   }
+   },
+   "Detailed" => // Default 0 - set to 1 or receive logs marked as detailed information.
 ]
 ```
 
