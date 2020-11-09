@@ -11,6 +11,17 @@ Manager::instance()
 @return - `\B2U\Core\Manager` - Returns the single instance of the manager object when called from any .php script in the framework.
 ##
 ```PHP 
+Manager::log($message, $args, $detailed = false)
+```
+@param **$message** - `string` - An identifying message for the log entry.
+
+@param **$args** - `Array` - An array of parameters and arguments to be saved as JSON with the log entry.
+
+@param **$detailed** - `bool` - Default `false`, set to `true` to indicate the log entry will only be available in the `Logging::Callback` when `Logging::Detailed` is set to true.
+
+Function is used to trigger log events that can be captured and processed using the `setup()` `Logging` definition. 
+##
+```PHP 
 Manager::instance()->getSession()
 ```
 @return - `\B2U\Core\Session` - Returns the session object's single instance, which encapsulates the current `$_SESSION` superglobal, and provides functionalities for session management.
@@ -143,8 +154,12 @@ The $config is an array used to provide data to set up the framework and the app
 "Logging" => [
    "Enable" =>   // Default 0 - set to 1 or true to allow callback to receive log data.
    "Callback" => function($args) {
-      // $args will contain an array with information regarding the log entry
+      // $args will contain a JSON with information regarding the log entries
       // this data will vary depending on where and how it is being logged-in
+      //
+      // @note - use json_decode on the $args to extract the log information.
+      // the array will have a "__msg" and "__data" key values, where the msg
+      // contain a string, and the data is an array with additional log info.
    },
    "Detailed" => // Default 0 - set to 1 or receive logs marked as detailed information.
 ]
