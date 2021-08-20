@@ -68,6 +68,15 @@ if ($ldap_auth->isUserAuthorized()) {
 ***@note -*** _There are multiple ways to access Modules in b2uFramework._
 ##
 ```PHP 
+Manager::instance()->getPlugin($plugin = "", $action = "index.php")
+```
+@param **$plugin** - `string` - The Plugin key value from the `config['Plugins']` list.
+
+@param **$action** - `string` - Default `index`, The file within the plugin that contains the action definition.
+
+@return - `Object` - Returns an instance to the desired Plugin's action or exception on failure. Invalid parameters will result in a standard `\Exception`. Providing no $plugin will return an `Array` of all Plugins available.
+##
+```PHP 
 Manager::instance()->setup($config)
 ```
 @param **$config** - `Array` - Allow customization of the application by setting up the central routing and site configuration parameters.
