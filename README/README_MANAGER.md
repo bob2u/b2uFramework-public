@@ -75,6 +75,8 @@ Manager::instance()->getPlugin($plugin = "", $action = "index.php")
 @param **$action** - `string` - Default `index`, The file within the plugin that contains the action definition.
 
 @return - `Object` - Returns an instance to the desired Plugin's action or exception on failure. Invalid parameters will result in a standard `\Exception`. Providing no $plugin will return an `Array` of all Plugins available.
+
+This feature can be used to access functions across plugins, and reduce the need to redefine standard functionalities that may already exists in a give plugin.
 ##
 ```PHP 
 Manager::instance()->setup($config)
