@@ -184,6 +184,16 @@ The $config is an array used to provide data to set up the framework and the app
    "Kill" =>    // int - Default 300
 ]
 ```
+
+8) **AccessControl** - (Optional) Set the AccessControl header information
+
+```php
+[
+   "Origin" =>      // string - Default *
+   "Methods" =>     // string - Default POST, GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+   "Headers"  =>    // string - Default "", comma separated additional headers supported
+]
+```
 ##
 ```PHP 
 Manager::instance()->augment($config, $mode)
