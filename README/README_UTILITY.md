@@ -48,7 +48,7 @@
 ```
 ##
 ```PHP
-\B2U\Core\Utility::rrmdir($dir)
+\B2U\Core\Utility::rrmdir($dir, $filter = [])
 ```
 ##
 ```PHP
