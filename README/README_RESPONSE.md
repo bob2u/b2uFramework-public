@@ -40,6 +40,14 @@ const ASYNC_COMPLETED   = 303;	// async operation completed
 ***@note -*** _If this function is not called then the default 200 will be provided, or 500 on system error_
 ##
 ```PHP 
+setCode($http_code)
+```
+@param **$http_code** - `string` - HTTP response code to be sent with headers.
+
+@return - `\B2U\Core\Response` - Returns the response object's instance for chaining
+
+##
+```PHP 
 setHeader($key, $value)
 ```
 @param **$key** - `string` - HTTP header flags.
@@ -67,3 +75,14 @@ send($request_type)
 This function will send headers back to a requester and terminate the PHP execution. It is typically called by the `\B2U\Core\Manager\` via `run()` or `respond()` functions, and would rarely be called by an application directly.
 
 ***@note -*** _When sending content back without a predefined `"Content-Type"` header, then this function will make every attempt to determine the type associated with the content. If it is unable to identify the content type, then it will throw an `\Exception`._
+##
+```PHP 
+terminate($header)
+```
+@param **$header** - `string` - header information to be sent.
+
+@return - `\B2U\Core\Response` - Returns the response object's instance for chaining
+
+This is a unique response function that is used in cases where the application may want to send a different type of header information with no content (e.g. "HTTP/1.1 403 Forbidden" or "HTTP/1.1 404 File Not Found").
+
+***@note -*** _Using this call will ignore the content being provided_
