@@ -175,10 +175,14 @@ The b2uframework calls this function before calling an Action's Method to provid
 ##
 ```PHP
 \B2U\Core\Action
-    callOn($methods, $callback)
+    callOn($methods, $callback, $params)
 ```
 @param **$methods** - `Array` - An array of one or more supported request methods (`GET`, `POST`, `PUT`, `PATCH`, and `DELETE`)
 
 @param **$callback** - `Array or Function` - Can be an anonymous function or an `Array` with the following signature `[$this, 'method_name']` where `'method_name'` is a `string` representing the Method within the Action.
+
+@param **$params** - `Array` - (optional) An array of one or more string names to be used for parameter names when arguments are passed as URL paths.
+
+The 3rd parameter is useful when dealing with URLs that do not follow the standard /plugin/method/action structure.  More specifically, if we want to declare a /plugin/param1/param2/... format we would use this 3rd parameter as demonstarted below:
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
