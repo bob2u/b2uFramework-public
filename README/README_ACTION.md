@@ -183,6 +183,33 @@ The b2uframework calls this function before calling an Action's Method to provid
 
 @param **$params** - `Array` - (optional) An array of one or more string names to be used for parameter names when arguments are passed as URL paths.
 
-The 3rd parameter is useful when dealing with URLs that do not follow the standard /plugin/method/action structure.  More specifically, if we want to declare a /plugin/param1/param2/... format we would use this 3rd parameter as demonstarted below:
+The 3rd parameter is useful when dealing with URLs that do not follow the standard `plugin/action/method/` structure - more specifically, to declare a `/plugin/param1/param2/...` format as demonstarted below:
+
+```
+www.sitename.com/plugin/var1/var2/var3/
+```
+
+```PHP
+// notice the class is the index.php defined within the plugin directory
+// furthermore, the params are defined on the callOn for the root object
+class index extends \B2U\Core\Action implements \B2U\Core\IAction {
+
+    function __construct($method, & $params, & $response) {
+        parent::__construct($method, $params, $response);
+        
+        // this call indicates that the Method foo will only support POST and PUT
+        $this->callOn(["GET"], function() {
+              
+              $arg1 = $this->Parameters()["arg1"];   // var1
+              $arg2 = $this->Parameters()["arg2"];   // var2
+              $arg3 = $this->Parameters()[2];        // var3
+              
+              ...
+              
+        }, ["arg1","arg2"]);        
+    }
+}
+```
+
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_ACTION.md#b2ucoreaction)
