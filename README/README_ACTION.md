@@ -198,7 +198,7 @@ class index extends \B2U\Core\Action implements \B2U\Core\IAction {
         parent::__construct($method, $params, $response);
         
         // this call indicates that the Method foo will only support POST and PUT
-        $this->callOn(["GET"], function() {
+        $this->callOn(["POST","PUT"], function() {
               
               $arg1 = $this->Parameters()["arg1"];   // var1
               $arg2 = $this->Parameters()["arg2"];   // var2
