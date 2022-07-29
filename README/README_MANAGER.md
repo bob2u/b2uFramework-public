@@ -4,6 +4,13 @@
 
 The ***Manager*** is a Singletone object, which means it will only have one instance of it allocated for the script execution duration. It provides interfaces to access most of the framework's objects via defined accessors.
 
+# CLI Support
+The Framework supports CLI call to scripts, although a bit unconventional. Endpoint/Action definition are required even when calling the framwork from CLI. The command would follow a similar signiature to a GET request, and will be processed the same as demonstarted below.
+
+```PHP
+> php index.php "path/to/action?arg1=val1&arg2=val2&..."
+```
+
 # Methods
 ```PHP 
 Manager::instance()
@@ -205,8 +212,10 @@ Manager::instance()->augment($config, $mode)
 In some instances, an application will want to augment the existing Module definitions or Plugin definitions to include additional features. For example, an application would like to add a new parameter `"Role"` to the Plugin's definition, beyond the standard `"Path"` and `"Include"`, so it can be used during access permission checking operations. The `augment()` function can be called before or after `setup()` to accomplish this effect.
 ##
 ```PHP 
-Manager::instance()->run()
+Manager::instance()->run($argv = [])
 ```
+@param **$argv** - `Array` - Array supplied via command line, which will be populated and used if called via CLI.
+
 Aliase for `parse()`, `route()`, and `response()` calls. `parse()` performs URL pasrsing and data extraction of the user's request into a `\B2U\Core\Request` object. `route()` does the heavy-lifting and routing of a request to the `Plugin / Action / Method` while passing all necessary parameters. `response()` is an aliase for the `B2U\Core\Response::send` function.
 
 ***@note -*** _This is the preferred method for calling the framework as it will internally catch exceptions and process them as errors. If the application decides to use the individual `parse()`, `route()`, and `response()` calls then they should also enclose the execution inside a `try/catch` block and `trigger_error()` on any exceptions._
