@@ -221,16 +221,22 @@ Aliase for `parse()`, `route()`, and `response()` calls. `parse()` performs URL 
 ***@note -*** _This is the preferred method for calling the framework as it will internally catch exceptions and process them as errors. If the application decides to use the individual `parse()`, `route()`, and `response()` calls then they should also enclose the execution inside a `try/catch` block and `trigger_error()` on any exceptions._
 ##
 ```PHP 
-Manager::instance()->callEndpoint($endpoint, $request, $data, $cookies = true)
+Manager::instance()->cURL($endpoint, $method, $data, $header = [], $follow = false, $headers = false, $cookies = false)
 ```
 @param **$endpoint** - `string` - The target `Plugin/[Action/[Method]]` to be called
 
 @param **$request** - `string` - One of the values of `GET`, `POST`, `PUT` or `DELETE`
 
-@param **$data** - `Array` - An Array of key/value pairs to be transmitted to the $endpoint using the defined $request
+@param **$data** - `Array|String` - An Array of key/value pairs or string to be transmitted to the $endpoint using the defined $request
 
-@param **$cookies** - `bool` - Default `true`, Indicates if all cookie data should be sent to the target $endpoint.
+@param **$header** - `Array` - Optional Array of headers to be sent with request
 
-@return - \[`Mixed`, `int`] - Returns the cURL call results, and HTTP response code from making the request - throws` \Exception` on any errors.
+@param **$follow** - `bool` - Default `false`, If response provides 301 redirect then it will follow it until final destination 
+
+@param **$headers** - `bool` - Default `false`, If set to true then it will also capture the headers from the response
+
+@param **$cookies** - `bool` - Default `false`, Indicates if all cookie data should be sent to the target $endpoint.
+
+@return - \[`Mixed`, `int`] - Returns the cURL call results, and HTTP response code from making the request, and headers (if **$headers** is `true`) - throws` \Exception` on any errors.
 
 [Top](https://github.com/bob2u/b2uFramework-public/blob/master/README/README_MANAGER.md#b2ucoremanager)
